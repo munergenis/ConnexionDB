@@ -28,7 +28,7 @@ namespace Business
             command.CommandText = query;
         }
 
-        public void RunQuery()
+        public void ExecuteQuery()
         {
             command.Connection = connection;
 
@@ -43,6 +43,24 @@ namespace Business
                 throw ex;
             }
         }
+
+        public void ExecuteNonQuery()
+        {  
+            command.Connection = connection;
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
 
         public void CloseConnection()
         {

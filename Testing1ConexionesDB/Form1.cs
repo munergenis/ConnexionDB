@@ -53,5 +53,10 @@ namespace Testing1ConexionesDB
             }
         }
 
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmNuevoProfesor frmNuevoProfesor = new FrmNuevoProfesor();
+            frmNuevoProfesor.ShowDialog();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.DgvProfesores = new System.Windows.Forms.DataGridView();
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
+            this.BtnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).BeginInit();
             this.GbxNombreUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProfesores)).BeginInit();
@@ -82,7 +83,7 @@
             this.DgvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProfesores.Location = new System.Drawing.Point(77, 268);
             this.DgvProfesores.Name = "DgvProfesores";
-            this.DgvProfesores.Size = new System.Drawing.Size(777, 253);
+            this.DgvProfesores.Size = new System.Drawing.Size(777, 237);
             this.DgvProfesores.TabIndex = 0;
             this.DgvProfesores.SelectionChanged += new System.EventHandler(this.DgvProfesores_SelectionChanged);
             // 
@@ -110,11 +111,23 @@
             this.LblApellido.TabIndex = 3;
             this.LblApellido.Text = "Apellido";
             // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAgregar.Location = new System.Drawing.Point(77, 521);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(89, 29);
+            this.BtnAgregar.TabIndex = 7;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 579);
+            this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.GbxNombreUsuario);
             this.Controls.Add(this.LblApellido);
             this.Controls.Add(this.LblNombre);
@@ -142,6 +155,7 @@
         private System.Windows.Forms.DataGridView DgvProfesores;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Label LblApellido;
+        private System.Windows.Forms.Button BtnAgregar;
     }
 }
 
