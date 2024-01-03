@@ -54,15 +54,23 @@
             this.LblTitle = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
+            this.GrbDatosEscuela = new System.Windows.Forms.GroupBox();
+            this.LblDisciplinas = new System.Windows.Forms.Label();
+            this.LblGenero = new System.Windows.Forms.Label();
+            this.LblGrupos = new System.Windows.Forms.Label();
+            this.CbxGenero = new System.Windows.Forms.ComboBox();
+            this.CbxDisciplinas = new System.Windows.Forms.ComboBox();
+            this.CbxGrupos = new System.Windows.Forms.ComboBox();
             this.GbxDatosUsuario.SuspendLayout();
             this.GbxDatosPersonales.SuspendLayout();
             this.GbxDatosContacto.SuspendLayout();
+            this.GrbDatosEscuela.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblNombreUsuario
             // 
             this.LblNombreUsuario.AutoSize = true;
-            this.LblNombreUsuario.Location = new System.Drawing.Point(43, 42);
+            this.LblNombreUsuario.Location = new System.Drawing.Point(40, 45);
             this.LblNombreUsuario.Name = "LblNombreUsuario";
             this.LblNombreUsuario.Size = new System.Drawing.Size(98, 15);
             this.LblNombreUsuario.TabIndex = 0;
@@ -71,7 +79,7 @@
             // LblContraseña
             // 
             this.LblContraseña.AutoSize = true;
-            this.LblContraseña.Location = new System.Drawing.Point(69, 68);
+            this.LblContraseña.Location = new System.Drawing.Point(66, 71);
             this.LblContraseña.Name = "LblContraseña";
             this.LblContraseña.Size = new System.Drawing.Size(72, 15);
             this.LblContraseña.TabIndex = 1;
@@ -116,7 +124,7 @@
             // LblFechaNacimiento
             // 
             this.LblFechaNacimiento.AutoSize = true;
-            this.LblFechaNacimiento.Location = new System.Drawing.Point(14, 121);
+            this.LblFechaNacimiento.Location = new System.Drawing.Point(14, 166);
             this.LblFechaNacimiento.Name = "LblFechaNacimiento";
             this.LblFechaNacimiento.Size = new System.Drawing.Size(127, 15);
             this.LblFechaNacimiento.TabIndex = 6;
@@ -151,14 +159,14 @@
             // 
             // TxtNombreUsuario
             // 
-            this.TxtNombreUsuario.Location = new System.Drawing.Point(147, 39);
+            this.TxtNombreUsuario.Location = new System.Drawing.Point(144, 42);
             this.TxtNombreUsuario.Name = "TxtNombreUsuario";
             this.TxtNombreUsuario.Size = new System.Drawing.Size(200, 23);
             this.TxtNombreUsuario.TabIndex = 0;
             // 
             // TxtContraseña
             // 
-            this.TxtContraseña.Location = new System.Drawing.Point(147, 65);
+            this.TxtContraseña.Location = new System.Drawing.Point(144, 68);
             this.TxtContraseña.Name = "TxtContraseña";
             this.TxtContraseña.Size = new System.Drawing.Size(200, 23);
             this.TxtContraseña.TabIndex = 1;
@@ -214,31 +222,29 @@
             // 
             // DtpFechaNacimiento
             // 
-            this.DtpFechaNacimiento.Location = new System.Drawing.Point(147, 118);
+            this.DtpFechaNacimiento.Location = new System.Drawing.Point(147, 163);
             this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             this.DtpFechaNacimiento.Size = new System.Drawing.Size(200, 23);
             this.DtpFechaNacimiento.TabIndex = 3;
             // 
             // GbxDatosUsuario
             // 
-            this.GbxDatosUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GbxDatosUsuario.Controls.Add(this.TxtNombreUsuario);
             this.GbxDatosUsuario.Controls.Add(this.LblNombreUsuario);
             this.GbxDatosUsuario.Controls.Add(this.LblContraseña);
             this.GbxDatosUsuario.Controls.Add(this.TxtContraseña);
             this.GbxDatosUsuario.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GbxDatosUsuario.Location = new System.Drawing.Point(114, 94);
+            this.GbxDatosUsuario.Location = new System.Drawing.Point(74, 95);
             this.GbxDatosUsuario.Name = "GbxDatosUsuario";
-            this.GbxDatosUsuario.Size = new System.Drawing.Size(384, 118);
+            this.GbxDatosUsuario.Size = new System.Drawing.Size(384, 123);
             this.GbxDatosUsuario.TabIndex = 0;
             this.GbxDatosUsuario.TabStop = false;
             this.GbxDatosUsuario.Text = "Datos de Usuario";
             // 
             // GbxDatosPersonales
             // 
-            this.GbxDatosPersonales.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GbxDatosPersonales.Controls.Add(this.CbxGenero);
+            this.GbxDatosPersonales.Controls.Add(this.LblGenero);
             this.GbxDatosPersonales.Controls.Add(this.TxtNombre);
             this.GbxDatosPersonales.Controls.Add(this.LblNombre);
             this.GbxDatosPersonales.Controls.Add(this.DtpFechaNacimiento);
@@ -248,17 +254,15 @@
             this.GbxDatosPersonales.Controls.Add(this.TxtApellido1);
             this.GbxDatosPersonales.Controls.Add(this.TxtApellido2);
             this.GbxDatosPersonales.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GbxDatosPersonales.Location = new System.Drawing.Point(114, 236);
+            this.GbxDatosPersonales.Location = new System.Drawing.Point(494, 95);
             this.GbxDatosPersonales.Name = "GbxDatosPersonales";
-            this.GbxDatosPersonales.Size = new System.Drawing.Size(384, 167);
+            this.GbxDatosPersonales.Size = new System.Drawing.Size(384, 207);
             this.GbxDatosPersonales.TabIndex = 1;
             this.GbxDatosPersonales.TabStop = false;
             this.GbxDatosPersonales.Text = "Datos Personales";
             // 
             // GbxDatosContacto
             // 
-            this.GbxDatosContacto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GbxDatosContacto.Controls.Add(this.TxtEmail);
             this.GbxDatosContacto.Controls.Add(this.LblEmail);
             this.GbxDatosContacto.Controls.Add(this.LblTelefono);
@@ -268,9 +272,9 @@
             this.GbxDatosContacto.Controls.Add(this.LblCiudad);
             this.GbxDatosContacto.Controls.Add(this.TxtTelefono);
             this.GbxDatosContacto.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GbxDatosContacto.Location = new System.Drawing.Point(114, 423);
+            this.GbxDatosContacto.Location = new System.Drawing.Point(74, 246);
             this.GbxDatosContacto.Name = "GbxDatosContacto";
-            this.GbxDatosContacto.Size = new System.Drawing.Size(384, 178);
+            this.GbxDatosContacto.Size = new System.Drawing.Size(384, 184);
             this.GbxDatosContacto.TabIndex = 2;
             this.GbxDatosContacto.TabStop = false;
             this.GbxDatosContacto.Text = "Datos de Contacto";
@@ -281,7 +285,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(110, 41);
+            this.LblTitle.Location = new System.Drawing.Point(70, 42);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(142, 23);
             this.LblTitle.TabIndex = 23;
@@ -289,7 +293,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(399, 624);
+            this.BtnCancelar.Location = new System.Drawing.Point(779, 445);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(99, 33);
             this.BtnCancelar.TabIndex = 4;
@@ -299,7 +303,7 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(261, 624);
+            this.BtnAceptar.Location = new System.Drawing.Point(674, 445);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(99, 33);
             this.BtnAceptar.TabIndex = 3;
@@ -307,11 +311,80 @@
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
+            // GrbDatosEscuela
+            // 
+            this.GrbDatosEscuela.Controls.Add(this.CbxGrupos);
+            this.GrbDatosEscuela.Controls.Add(this.CbxDisciplinas);
+            this.GrbDatosEscuela.Controls.Add(this.LblGrupos);
+            this.GrbDatosEscuela.Controls.Add(this.LblDisciplinas);
+            this.GrbDatosEscuela.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GrbDatosEscuela.Location = new System.Drawing.Point(494, 318);
+            this.GrbDatosEscuela.Name = "GrbDatosEscuela";
+            this.GrbDatosEscuela.Size = new System.Drawing.Size(384, 112);
+            this.GrbDatosEscuela.TabIndex = 24;
+            this.GrbDatosEscuela.TabStop = false;
+            this.GrbDatosEscuela.Text = "Datos de la Escuela";
+            // 
+            // LblDisciplinas
+            // 
+            this.LblDisciplinas.AutoSize = true;
+            this.LblDisciplinas.Location = new System.Drawing.Point(71, 41);
+            this.LblDisciplinas.Name = "LblDisciplinas";
+            this.LblDisciplinas.Size = new System.Drawing.Size(70, 15);
+            this.LblDisciplinas.TabIndex = 0;
+            this.LblDisciplinas.Text = "Disciplinas";
+            // 
+            // LblGenero
+            // 
+            this.LblGenero.AutoSize = true;
+            this.LblGenero.Location = new System.Drawing.Point(93, 137);
+            this.LblGenero.Name = "LblGenero";
+            this.LblGenero.Size = new System.Drawing.Size(48, 15);
+            this.LblGenero.TabIndex = 7;
+            this.LblGenero.Text = "Genero";
+            // 
+            // LblGrupos
+            // 
+            this.LblGrupos.AutoSize = true;
+            this.LblGrupos.Location = new System.Drawing.Point(93, 70);
+            this.LblGrupos.Name = "LblGrupos";
+            this.LblGrupos.Size = new System.Drawing.Size(48, 15);
+            this.LblGrupos.TabIndex = 1;
+            this.LblGrupos.Text = "Grupos";
+            // 
+            // CbxGenero
+            // 
+            this.CbxGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxGenero.FormattingEnabled = true;
+            this.CbxGenero.Location = new System.Drawing.Point(147, 134);
+            this.CbxGenero.Name = "CbxGenero";
+            this.CbxGenero.Size = new System.Drawing.Size(200, 23);
+            this.CbxGenero.TabIndex = 8;
+            // 
+            // CbxDisciplinas
+            // 
+            this.CbxDisciplinas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxDisciplinas.FormattingEnabled = true;
+            this.CbxDisciplinas.Location = new System.Drawing.Point(147, 38);
+            this.CbxDisciplinas.Name = "CbxDisciplinas";
+            this.CbxDisciplinas.Size = new System.Drawing.Size(200, 23);
+            this.CbxDisciplinas.TabIndex = 2;
+            // 
+            // CbxGrupos
+            // 
+            this.CbxGrupos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxGrupos.FormattingEnabled = true;
+            this.CbxGrupos.Location = new System.Drawing.Point(147, 67);
+            this.CbxGrupos.Name = "CbxGrupos";
+            this.CbxGrupos.Size = new System.Drawing.Size(200, 23);
+            this.CbxGrupos.TabIndex = 3;
+            // 
             // FrmNuevoProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 725);
+            this.ClientSize = new System.Drawing.Size(948, 509);
+            this.Controls.Add(this.GrbDatosEscuela);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblTitle);
@@ -320,18 +393,19 @@
             this.Controls.Add(this.GbxDatosUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(619, 764);
-            this.MinimumSize = new System.Drawing.Size(619, 764);
             this.Name = "FrmNuevoProfesor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Profesor";
+            this.Load += new System.EventHandler(this.FrmNuevoProfesor_Load);
             this.GbxDatosUsuario.ResumeLayout(false);
             this.GbxDatosUsuario.PerformLayout();
             this.GbxDatosPersonales.ResumeLayout(false);
             this.GbxDatosPersonales.PerformLayout();
             this.GbxDatosContacto.ResumeLayout(false);
             this.GbxDatosContacto.PerformLayout();
+            this.GrbDatosEscuela.ResumeLayout(false);
+            this.GrbDatosEscuela.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,5 +439,12 @@
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnAceptar;
+        private System.Windows.Forms.GroupBox GrbDatosEscuela;
+        private System.Windows.Forms.Label LblDisciplinas;
+        private System.Windows.Forms.Label LblGenero;
+        private System.Windows.Forms.Label LblGrupos;
+        private System.Windows.Forms.ComboBox CbxGenero;
+        private System.Windows.Forms.ComboBox CbxGrupos;
+        private System.Windows.Forms.ComboBox CbxDisciplinas;
     }
 }

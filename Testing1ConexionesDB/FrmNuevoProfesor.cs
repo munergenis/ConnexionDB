@@ -54,5 +54,23 @@ namespace Testing1ConexionesDB
             }
 
         }
+
+        private void FrmNuevoProfesor_Load(object sender, EventArgs e)
+        {
+            GeneroBusiness generoBusiness = new GeneroBusiness();
+            DisciplinaBusiness disciplinaBusiness = new DisciplinaBusiness();
+            GrupoBusiness grupoBusiness = new GrupoBusiness();
+
+            try
+            {
+                CbxGenero.DataSource = generoBusiness.List();
+                CbxDisciplinas.DataSource = disciplinaBusiness.List();
+                CbxGrupos.DataSource = grupoBusiness.List();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de Datos " + ex.ToString());
+            }
+        }
     }
 }
