@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Testing1ConexionesDB
 {
-    public partial class FrmNuevoProfesor : Form //dev_branch
+    public partial class FrmNuevoProfesor : Form //feature/desplegables-profesor
     {
         public FrmNuevoProfesor()
         {
