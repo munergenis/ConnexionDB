@@ -66,12 +66,16 @@ namespace Business
         { 
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = $"INSERT INTO TESTING_PROFESORES VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', 2, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', '', 2, 2)";
+            string queryString = $"INSERT INTO TESTING_PROFESORES VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', '', @IdDisciplina, @IdGrupo)";
 
             dataAccess.SetQuery(queryString);
 
             try
             {
+                dataAccess.SetCommandParameters("@IdGenero", nuevoProfesor.Genero.Id);
+                dataAccess.SetCommandParameters("@IdDisciplina", nuevoProfesor.Disciplinas.Id);
+                dataAccess.SetCommandParameters("@IdGrupo", nuevoProfesor.Grupos.Id);
+
                 dataAccess.ExecuteNonQuery();
             }
             catch (Exception ex)
