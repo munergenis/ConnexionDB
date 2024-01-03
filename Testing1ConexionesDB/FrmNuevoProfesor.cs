@@ -41,6 +41,9 @@ namespace Testing1ConexionesDB
                 nuevoProfesor.Telefono = int.Parse(TxtTelefono.Text);
                 nuevoProfesor.Direccion = TxtDireccion.Text;
                 nuevoProfesor.Ciudad = TxtCiudad.Text;
+                nuevoProfesor.Genero = (Genero)CbxGenero.SelectedItem;
+                nuevoProfesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
+                nuevoProfesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
 
                 profesorBusiness.AgragarProfesor(nuevoProfesor);
                 Close();
