@@ -60,7 +60,10 @@ namespace Business
             }
         }
 
-
+        public void SetCommandParameters(string parameterName, object value)
+        {
+            command.Parameters.AddWithValue(parameterName, value);
+        }
 
         public void CloseConnection()
         {

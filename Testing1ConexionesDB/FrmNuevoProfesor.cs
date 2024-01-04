@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Testing1ConexionesDB
 {
-    public partial class FrmNuevoProfesor : Form //Main branch
+    public partial class FrmNuevoProfesor : Form
     {
         public FrmNuevoProfesor()
         {
@@ -41,6 +41,9 @@ namespace Testing1ConexionesDB
                 nuevoProfesor.Telefono = int.Parse(TxtTelefono.Text);
                 nuevoProfesor.Direccion = TxtDireccion.Text;
                 nuevoProfesor.Ciudad = TxtCiudad.Text;
+                nuevoProfesor.Genero = (Genero)CbxGenero.SelectedItem;
+                nuevoProfesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
+                nuevoProfesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
 
                 profesorBusiness.AgragarProfesor(nuevoProfesor);
                 Close();
@@ -53,6 +56,24 @@ namespace Testing1ConexionesDB
                 MessageBox.Show("Error al agregar el profesor. " + ex.Message);
             }
 
+        }
+
+        private void FrmNuevoProfesor_Load(object sender, EventArgs e)
+        {
+            GeneroBusiness generoBusiness = new GeneroBusiness();
+            DisciplinaBusiness disciplinaBusiness = new DisciplinaBusiness();
+            GrupoBusiness grupoBusiness = new GrupoBusiness();
+
+            try
+            {
+                CbxGenero.DataSource = generoBusiness.List();
+                CbxDisciplinas.DataSource = disciplinaBusiness.List();
+                CbxGrupos.DataSource = grupoBusiness.List();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de Datos " + ex.ToString());
+            }
         }
     }
 }

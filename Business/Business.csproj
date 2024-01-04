@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="AlumnoBusiness.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="DisciplinaBusiness.cs" />
+    <Compile Include="GeneroBusiness.cs" />
+    <Compile Include="GrupoBusiness.cs" />
     <Compile Include="ProfesorBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
