@@ -112,7 +112,7 @@
             this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.PbxFotoPerfil.Name = "PbxFotoPerfil";
             this.PbxFotoPerfil.Size = new System.Drawing.Size(265, 245);
-            this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbxFotoPerfil.TabIndex = 9;
             this.PbxFotoPerfil.TabStop = false;
             // 
@@ -128,6 +128,7 @@
             this.DgvAlumnos.RowHeadersWidth = 51;
             this.DgvAlumnos.Size = new System.Drawing.Size(1036, 292);
             this.DgvAlumnos.TabIndex = 8;
+            this.DgvAlumnos.SelectionChanged += new System.EventHandler(this.DgvAlumnos_SelectionChanged);
             // 
             // FrmAlumno
             // 
