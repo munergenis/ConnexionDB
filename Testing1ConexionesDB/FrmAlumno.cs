@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business;
+using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,8 @@ namespace Testing1ConexionesDB
 
         private void FrmAlumno_Load(object sender, EventArgs e)
         {
-
+            AlumnoBusiness alumnoBusiness = new AlumnoBusiness();
+            DgvAlumnos.DataSource = alumnoBusiness.List();
         }
     }
 }

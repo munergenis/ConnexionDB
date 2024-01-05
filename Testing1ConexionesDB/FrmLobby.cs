@@ -22,5 +22,11 @@ namespace Testing1ConexionesDB
             FrmProfesor frmProfesor = new FrmProfesor();
             frmProfesor.ShowDialog();
         }
+
+        private void BtnAlumnos_Click(object sender, EventArgs e)
+        {
+            FrmAlumno frmAlumno = new FrmAlumno();
+            frmAlumno.ShowDialog();
+        }
     }
 }

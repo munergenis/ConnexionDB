@@ -34,9 +34,10 @@
             // 
             // BtnProfesores
             // 
-            this.BtnProfesores.Location = new System.Drawing.Point(121, 97);
+            this.BtnProfesores.Location = new System.Drawing.Point(161, 119);
+            this.BtnProfesores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnProfesores.Name = "BtnProfesores";
-            this.BtnProfesores.Size = new System.Drawing.Size(132, 68);
+            this.BtnProfesores.Size = new System.Drawing.Size(176, 84);
             this.BtnProfesores.TabIndex = 0;
             this.BtnProfesores.Text = "Profesores";
             this.BtnProfesores.UseVisualStyleBackColor = true;
@@ -44,21 +45,24 @@
             // 
             // BtnAlumnos
             // 
-            this.BtnAlumnos.Location = new System.Drawing.Point(293, 97);
+            this.BtnAlumnos.Location = new System.Drawing.Point(391, 119);
+            this.BtnAlumnos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnAlumnos.Name = "BtnAlumnos";
-            this.BtnAlumnos.Size = new System.Drawing.Size(132, 68);
+            this.BtnAlumnos.Size = new System.Drawing.Size(176, 84);
             this.BtnAlumnos.TabIndex = 1;
             this.BtnAlumnos.Text = "Alumnos";
             this.BtnAlumnos.UseVisualStyleBackColor = true;
+            this.BtnAlumnos.Click += new System.EventHandler(this.BtnAlumnos_Click);
             // 
             // FrmLobby
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 262);
+            this.ClientSize = new System.Drawing.Size(728, 322);
             this.Controls.Add(this.BtnAlumnos);
             this.Controls.Add(this.BtnProfesores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FrmLobby";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
