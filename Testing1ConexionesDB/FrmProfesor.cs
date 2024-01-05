@@ -12,16 +12,16 @@ using Business;
 
 namespace Testing1ConexionesDB
 {
-    public partial class Form1 : Form
+    public partial class FrmProfesor : Form
     {
         private List<Profesor> ListaProfesores;
 
-        public Form1()
+        public FrmProfesor()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmProfesor_Load(object sender, EventArgs e)
         {
             ProfesorBusiness profesores = new ProfesorBusiness();
             ListaProfesores = profesores.List();

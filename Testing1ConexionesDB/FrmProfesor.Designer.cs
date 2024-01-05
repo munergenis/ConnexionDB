@@ -1,6 +1,6 @@
 ﻿namespace Testing1ConexionesDB
 {
-    partial class Form1
+    partial class FrmProfesor
     {
         /// <summary>
         /// Required designer variable.
@@ -122,7 +122,7 @@
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
-            // Form1
+            // FrmProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,11 +134,11 @@
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvProfesores);
             this.MinimumSize = new System.Drawing.Size(926, 618);
-            this.Name = "Form1";
+            this.Name = "FrmProfesor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "FrmProfesor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FrmProfesor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).EndInit();
             this.GbxNombreUsuario.ResumeLayout(false);
             this.GbxNombreUsuario.PerformLayout();

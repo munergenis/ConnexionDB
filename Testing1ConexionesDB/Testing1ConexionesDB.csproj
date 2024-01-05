@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,11 +61,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmAlumno.Designer.cs">
+      <DependentUpon>FrmAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLobby.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLobby.Designer.cs">
+      <DependentUpon>FrmLobby.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNuevoProfesor.cs">
       <SubType>Form</SubType>
@@ -58,13 +82,22 @@
     <Compile Include="FrmNuevoProfesor.Designer.cs">
       <DependentUpon>FrmNuevoProfesor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProfesor.Designer.cs">
+      <DependentUpon>FrmProfesor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAlumno.resx">
+      <DependentUpon>FrmAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLobby.resx">
+      <DependentUpon>FrmLobby.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNuevoProfesor.resx">
       <DependentUpon>FrmNuevoProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProfesor.resx">
+      <DependentUpon>FrmProfesor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +130,18 @@
       <Project>{5a346896-f743-4f43-8da2-ce5f2d0dc6b4}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
