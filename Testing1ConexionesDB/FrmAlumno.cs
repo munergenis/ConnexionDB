@@ -60,5 +60,11 @@ namespace Testing1ConexionesDB
                 PbxFotoPerfil.Load("https://likeadream.cat/wp-content/uploads/2020/01/cropped-AAFF-Logo-LikeADream-granate.png");
             }
         }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmNuevoAlumno frmNuevoAlumno = new FrmNuevoAlumno();
+            frmNuevoAlumno.ShowDialog();
+        }
     }
 }
