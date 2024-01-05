@@ -143,6 +143,7 @@
             this.Name = "FrmAlumno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAlumno";
+            this.Load += new System.EventHandler(this.FrmAlumno_Load);
             this.GbxNombreUsuario.ResumeLayout(false);
             this.GbxNombreUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).EndInit();

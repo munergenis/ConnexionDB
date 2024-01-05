@@ -16,5 +16,10 @@ namespace Testing1ConexionesDB
         {
             InitializeComponent();
         }
+
+        private void FrmAlumno_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
