@@ -40,7 +40,8 @@ namespace Business
                     aux.Telefono = (int)dataAccess.Reader["Telefono"];
                     aux.Direccion = (string)dataAccess.Reader["Direccion"];
                     aux.Ciudad = (string)dataAccess.Reader["Ciudad"];
-                    aux.UrlImagenPerfil = (string)dataAccess.Reader["UrlImagenPerfil"];
+                    if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
+                        aux.UrlImagenPerfil = (string)dataAccess.Reader["UrlImagenPerfil"];
                     aux.Disciplina = new Disciplina();
                     aux.Disciplina.Descripcion = (string)dataAccess.Reader["Disciplina"];
                     aux.Grupo = new Grupo();
@@ -66,7 +67,7 @@ namespace Business
         {
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = "INSERT INTO TESTING_ALUMNOS VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @UrlImagen, @IdDisciplina, @IdGrupo)";
+            string queryString = "INSERT INTO TESTING_ALUMNOS (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, IdDisciplinas, IdGrupos) VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @IdDisciplina, @IdGrupo)";
             dataAccess.SetQuery(queryString);
 
             try
@@ -82,7 +83,6 @@ namespace Business
                 dataAccess.SetCommandParameters("@Telefono", nuevoAlumno.Telefono);
                 dataAccess.SetCommandParameters("@Direccion", nuevoAlumno.Direccion);
                 dataAccess.SetCommandParameters("@Ciudad", nuevoAlumno.Ciudad);
-                dataAccess.SetCommandParameters("@UrlImgenPerfil", "");
                 dataAccess.SetCommandParameters("@IdDisciplina", nuevoAlumno.Disciplina.Id);
                 dataAccess.SetCommandParameters("@IdGrupo", nuevoAlumno.Grupo.Id);
 

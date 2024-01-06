@@ -40,7 +40,8 @@ namespace Business
                     aux.Telefono = (int)dataAccess.Reader["Telefono"];
                     aux.Direccion = (string)dataAccess.Reader["Direccion"];
                     aux.Ciudad = (string)dataAccess.Reader["Ciudad"];
-                    aux.UrlImagenPerfil = (string)dataAccess.Reader["urlImagenPerfil"];
+                    if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
+                        aux.UrlImagenPerfil = (string)dataAccess.Reader["urlImagenPerfil"];
                     aux.Disciplinas = new Disciplina();
                     aux.Disciplinas.Descripcion = (string)dataAccess.Reader["Disciplinas"];
                     aux.Grupos = new Grupo();
@@ -66,7 +67,7 @@ namespace Business
         { 
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = $"INSERT INTO TESTING_PROFESORES VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', '', @IdDisciplina, @IdGrupo)";
+            string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, IdDisciplinas, IdGrupos) VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', @IdDisciplina, @IdGrupo)";
 
             dataAccess.SetQuery(queryString);
 
