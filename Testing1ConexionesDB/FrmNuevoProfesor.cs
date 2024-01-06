@@ -75,7 +75,7 @@ namespace Testing1ConexionesDB
 
                 profesorBusiness.AgragarProfesor(nuevoProfesor);
                 Close();
-                MessageBox.Show("Nuevo profesor agregado");   
+                MessageBox.Show("Nuevo profesor agregado");
             }
             catch (Exception ex)
             {

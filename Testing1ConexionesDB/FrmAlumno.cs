@@ -20,10 +20,23 @@ namespace Testing1ConexionesDB
         }
 
         private List<Alumno> listOfAlumnos = new List<Alumno>();
-
         private AlumnoBusiness alumnoBusiness = new AlumnoBusiness();
 
         private void FrmAlumno_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void DgvAlumnos_SelectionChanged(object sender, EventArgs e)
+        {
+            Alumno seleccionado = (Alumno)DgvAlumnos.CurrentRow.DataBoundItem;
+            LoadImage(seleccionado.UrlImagenPerfil);
+            LblNombreUsuario.Text = seleccionado.NombreUsuario;
+            LblNombre.Text = seleccionado.Nombre;
+            LblApellido.Text = seleccionado.Apellido1;
+        }
+
+        private void LoadData()
         {
             try
             {
@@ -38,17 +51,8 @@ namespace Testing1ConexionesDB
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Imposible conectar con la Base de Datos" + ex.ToString());
+                MessageBox.Show("Ha habido un error al cargar la lista: " + ex.ToString());
             }
-        }
-
-        private void DgvAlumnos_SelectionChanged(object sender, EventArgs e)
-        {
-            Alumno seleccionado = (Alumno)DgvAlumnos.CurrentRow.DataBoundItem;
-            LoadImage(seleccionado.UrlImagenPerfil);
-            LblNombreUsuario.Text = seleccionado.NombreUsuario;
-            LblNombre.Text = seleccionado.Nombre;
-            LblApellido.Text = seleccionado.Apellido1;
         }
 
         private void LoadImage(string urlImagen)
@@ -59,7 +63,7 @@ namespace Testing1ConexionesDB
             }
             catch (Exception)
             {
-                PbxFotoPerfil.Load("https://likeadream.cat/wp-content/uploads/2020/01/cropped-AAFF-Logo-LikeADream-granate.png");
+                PbxFotoPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
 
@@ -67,6 +71,7 @@ namespace Testing1ConexionesDB
         {
             FrmNuevoAlumno frmNuevoAlumno = new FrmNuevoAlumno();
             frmNuevoAlumno.ShowDialog();
+            LoadData();
         }
     }
 }

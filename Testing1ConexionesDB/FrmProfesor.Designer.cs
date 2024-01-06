@@ -44,10 +44,10 @@
             // 
             this.PbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PbxFotoPerfil.Location = new System.Drawing.Point(103, 76);
-            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.PbxFotoPerfil.Name = "PbxFotoPerfil";
             this.PbxFotoPerfil.Size = new System.Drawing.Size(265, 245);
-            this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbxFotoPerfil.TabIndex = 1;
             this.PbxFotoPerfil.TabStop = false;
             // 
@@ -60,7 +60,7 @@
             this.LblNombreUsuario.Location = new System.Drawing.Point(8, 33);
             this.LblNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNombreUsuario.Name = "LblNombreUsuario";
-            this.LblNombreUsuario.Size = new System.Drawing.Size(181, 29);
+            this.LblNombreUsuario.Size = new System.Drawing.Size(143, 23);
             this.LblNombreUsuario.TabIndex = 4;
             this.LblNombreUsuario.Text = "NombreUsuario";
             this.LblNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,9 +71,9 @@
             this.GbxNombreUsuario.Controls.Add(this.LblNombreUsuario);
             this.GbxNombreUsuario.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GbxNombreUsuario.Location = new System.Drawing.Point(377, 76);
-            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.GbxNombreUsuario.Name = "GbxNombreUsuario";
-            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(4);
             this.GbxNombreUsuario.Size = new System.Drawing.Size(207, 81);
             this.GbxNombreUsuario.TabIndex = 6;
             this.GbxNombreUsuario.TabStop = false;
@@ -86,7 +86,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProfesores.Location = new System.Drawing.Point(103, 330);
-            this.DgvProfesores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgvProfesores.Margin = new System.Windows.Forms.Padding(4);
             this.DgvProfesores.MultiSelect = false;
             this.DgvProfesores.Name = "DgvProfesores";
             this.DgvProfesores.ReadOnly = true;
@@ -105,7 +105,7 @@
             this.LblNombre.Location = new System.Drawing.Point(377, 223);
             this.LblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(140, 41);
+            this.LblNombre.Size = new System.Drawing.Size(111, 33);
             this.LblNombre.TabIndex = 2;
             this.LblNombre.Text = "Nombre";
             // 
@@ -118,7 +118,7 @@
             this.LblApellido.Location = new System.Drawing.Point(380, 278);
             this.LblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(101, 29);
+            this.LblApellido.Size = new System.Drawing.Size(80, 23);
             this.LblApellido.TabIndex = 3;
             this.LblApellido.Text = "Apellido";
             // 
@@ -126,7 +126,7 @@
             // 
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnAgregar.Location = new System.Drawing.Point(103, 641);
-            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(119, 36);
             this.BtnAgregar.TabIndex = 7;
@@ -145,7 +145,7 @@
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvProfesores);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1229, 750);
             this.Name = "FrmProfesor";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

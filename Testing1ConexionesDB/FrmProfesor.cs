@@ -15,6 +15,7 @@ namespace Testing1ConexionesDB
     public partial class FrmProfesor : Form
     {
         private List<Profesor> ListaProfesores;
+        private ProfesorBusiness profesores = new ProfesorBusiness();
 
         public FrmProfesor()
         {
@@ -23,15 +24,7 @@ namespace Testing1ConexionesDB
 
         private void FrmProfesor_Load(object sender, EventArgs e)
         {
-            ProfesorBusiness profesores = new ProfesorBusiness();
-            ListaProfesores = profesores.List();
-            DgvProfesores.DataSource = ListaProfesores;
-            DgvProfesores.Columns["UrlImagenPerfil"].Visible = false;
-
-            CargarImagen(ListaProfesores[0].UrlImagenPerfil);
-            LblNombre.Text = ListaProfesores[0].Nombre;
-            LblApellido.Text = ListaProfesores[0].Apellido1;
-            LblNombreUsuario.Text = ListaProfesores[0].NombreUsuario;
+            LoadData();
         }
 
         private void DgvProfesores_SelectionChanged(object sender, EventArgs e)
@@ -43,6 +36,25 @@ namespace Testing1ConexionesDB
             LblNombreUsuario.Text = seleccionado.NombreUsuario;
         }
 
+        private void LoadData()
+        {
+            try
+            {
+                ListaProfesores = profesores.List();
+                DgvProfesores.DataSource = ListaProfesores;
+                DgvProfesores.Columns["UrlImagenPerfil"].Visible = false;
+
+                CargarImagen(ListaProfesores[0].UrlImagenPerfil);
+                LblNombre.Text = ListaProfesores[0].Nombre;
+                LblApellido.Text = ListaProfesores[0].Apellido1;
+                LblNombreUsuario.Text = ListaProfesores[0].NombreUsuario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha habido un error al cargar la lista: " + ex.ToString());
+            }
+        }
+
         private void CargarImagen(string url)
         {
             try
@@ -51,7 +63,7 @@ namespace Testing1ConexionesDB
             }
             catch (Exception)
             {
-                PbxFotoPerfil.Load("https://likeadream.cat/wp-content/uploads/2020/01/cropped-AAFF-Logo-LikeADream-granate.png");
+                PbxFotoPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
 
@@ -59,6 +71,7 @@ namespace Testing1ConexionesDB
         {
             FrmNuevoProfesor frmNuevoProfesor = new FrmNuevoProfesor();
             frmNuevoProfesor.ShowDialog();
+            LoadData();
         }
     }
 }
