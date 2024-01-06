@@ -30,6 +30,7 @@ namespace Testing1ConexionesDB
                 CbxGenero.DataSource = generoBusiness.List();
                 CbxDisciplinas.DataSource = disciplinaBusiness.List();
                 CbxGrupos.DataSource = grupoBusiness.List();
+                LoadImage(string.Empty);
             }
             catch (Exception ex)
             {
@@ -69,6 +70,7 @@ namespace Testing1ConexionesDB
                 nuevoProfesor.Telefono = int.Parse(TxtTelefono.Text);
                 nuevoProfesor.Direccion = TxtDireccion.Text;
                 nuevoProfesor.Ciudad = TxtCiudad.Text;
+                nuevoProfesor.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
                 nuevoProfesor.Genero = (Genero)CbxGenero.SelectedItem;
                 nuevoProfesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
                 nuevoProfesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
@@ -80,6 +82,23 @@ namespace Testing1ConexionesDB
             catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar el profesor: " + ex.Message);
+            }
+        }
+
+        private void TxtUrlImagenPerfil_Leave(object sender, EventArgs e)
+        {
+            LoadImage(TxtUrlImagenPerfil.Text);
+        }
+
+        private void LoadImage(string url)
+        {
+            try
+            {
+                PbxImagenPerfil.Load(url);
+            }
+            catch (Exception)
+            {
+                PbxImagenPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
     }

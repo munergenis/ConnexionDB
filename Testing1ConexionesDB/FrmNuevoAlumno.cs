@@ -18,6 +18,7 @@ namespace Testing1ConexionesDB
         {
             InitializeComponent();
         }
+
         private void FrmNuevoAlumno_Load(object sender, EventArgs e)
         {
             GeneroBusiness generoBusiness = new GeneroBusiness();
@@ -29,6 +30,7 @@ namespace Testing1ConexionesDB
                 CbxGenero.DataSource = generoBusiness.List();
                 CbxDisciplinas.DataSource = disciplinaBusiness.List();
                 CbxGrupos.DataSource = grupoBusiness.List();
+                LoadImage(string.Empty);
             }
             catch (Exception ex)
             {
@@ -67,6 +69,7 @@ namespace Testing1ConexionesDB
             nuevoAlumno.Telefono = int.Parse(TxtTelefono.Text);
             nuevoAlumno.Direccion = TxtDireccion.Text;
             nuevoAlumno.Ciudad = TxtCiudad.Text;
+            nuevoAlumno.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
             nuevoAlumno.Disciplina = (Disciplina)CbxDisciplinas.SelectedItem;
             nuevoAlumno.Grupo = (Grupo)CbxGrupos.SelectedItem;
 
@@ -79,6 +82,23 @@ namespace Testing1ConexionesDB
             catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar el alumno: " + ex.ToString());
+            }
+        }
+
+        private void TxtUrlImagenPerfil_Leave(object sender, EventArgs e)
+        {
+            LoadImage(TxtUrlImagenPerfil.Text);
+        }
+
+        private void LoadImage(string url)
+        {
+            try
+            {
+                PbxImagenPerfil.Load(url);
+            }
+            catch (Exception)
+            {
+                PbxImagenPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
     }

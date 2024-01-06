@@ -43,6 +43,7 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAgregar.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnAgregar.Location = new System.Drawing.Point(88, 621);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAgregar.Name = "BtnAgregar";
@@ -75,7 +76,7 @@
             this.LblNombreUsuario.Location = new System.Drawing.Point(8, 33);
             this.LblNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNombreUsuario.Name = "LblNombreUsuario";
-            this.LblNombreUsuario.Size = new System.Drawing.Size(181, 29);
+            this.LblNombreUsuario.Size = new System.Drawing.Size(143, 23);
             this.LblNombreUsuario.TabIndex = 4;
             this.LblNombreUsuario.Text = "NombreUsuario";
             this.LblNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -89,7 +90,7 @@
             this.LblApellido.Location = new System.Drawing.Point(365, 258);
             this.LblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(101, 29);
+            this.LblApellido.Size = new System.Drawing.Size(80, 23);
             this.LblApellido.TabIndex = 11;
             this.LblApellido.Text = "Apellido";
             // 
@@ -102,7 +103,7 @@
             this.LblNombre.Location = new System.Drawing.Point(362, 203);
             this.LblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(140, 41);
+            this.LblNombre.Size = new System.Drawing.Size(111, 33);
             this.LblNombre.TabIndex = 10;
             this.LblNombre.Text = "Nombre";
             // 
@@ -136,8 +137,8 @@
             // 
             // FrmAlumno
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1213, 713);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.GbxNombreUsuario);
@@ -145,10 +146,12 @@
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvAlumnos);
+            this.MaximizeBox = false;
             this.Name = "FrmAlumno";
+            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAlumno";
+            this.Text = "Alumnos";
             this.Load += new System.EventHandler(this.FrmAlumno_Load);
             this.GbxNombreUsuario.ResumeLayout(false);
             this.GbxNombreUsuario.PerformLayout();

@@ -125,6 +125,7 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnAgregar.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnAgregar.Location = new System.Drawing.Point(103, 641);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAgregar.Name = "BtnAgregar";
@@ -136,8 +137,8 @@
             // 
             // FrmProfesor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1213, 713);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.GbxNombreUsuario);
@@ -146,11 +147,13 @@
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvProfesores);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1229, 750);
             this.Name = "FrmProfesor";
+            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmProfesor";
+            this.Text = "Profesores";
             this.Load += new System.EventHandler(this.FrmProfesor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).EndInit();
             this.GbxNombreUsuario.ResumeLayout(false);

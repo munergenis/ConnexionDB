@@ -67,7 +67,7 @@ namespace Business
         {
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = "INSERT INTO TESTING_ALUMNOS (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, IdDisciplinas, IdGrupos) VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @IdDisciplina, @IdGrupo)";
+            string queryString = "INSERT INTO TESTING_ALUMNOS (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, UrlImagenPerfil, IdDisciplinas, IdGrupos) VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @UrlImagenPerfil, @IdDisciplina, @IdGrupo)";
             dataAccess.SetQuery(queryString);
 
             try
@@ -83,6 +83,7 @@ namespace Business
                 dataAccess.SetCommandParameters("@Telefono", nuevoAlumno.Telefono);
                 dataAccess.SetCommandParameters("@Direccion", nuevoAlumno.Direccion);
                 dataAccess.SetCommandParameters("@Ciudad", nuevoAlumno.Ciudad);
+                dataAccess.SetCommandParameters("@UrlImagenPerfil", nuevoAlumno.UrlImagenPerfil);
                 dataAccess.SetCommandParameters("@IdDisciplina", nuevoAlumno.Disciplina.Id);
                 dataAccess.SetCommandParameters("@IdGrupo", nuevoAlumno.Grupo.Id);
 

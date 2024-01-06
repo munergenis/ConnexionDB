@@ -34,6 +34,7 @@
             // 
             // BtnProfesores
             // 
+            this.BtnProfesores.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnProfesores.Location = new System.Drawing.Point(161, 119);
             this.BtnProfesores.Margin = new System.Windows.Forms.Padding(4);
             this.BtnProfesores.Name = "BtnProfesores";
@@ -45,6 +46,7 @@
             // 
             // BtnAlumnos
             // 
+            this.BtnAlumnos.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnAlumnos.Location = new System.Drawing.Point(391, 119);
             this.BtnAlumnos.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAlumnos.Name = "BtnAlumnos";
@@ -56,8 +58,8 @@
             // 
             // FrmLobby
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(728, 322);
             this.Controls.Add(this.BtnAlumnos);
             this.Controls.Add(this.BtnProfesores);
@@ -65,9 +67,10 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmLobby";
+            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmLobby";
+            this.Text = "Bienvenido";
             this.ResumeLayout(false);
 
         }

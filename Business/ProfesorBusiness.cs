@@ -67,13 +67,14 @@ namespace Business
         { 
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, IdDisciplinas, IdGrupos) VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', @IdDisciplina, @IdGrupo)";
+            string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, UrlImagenPerfil, IdDisciplinas, IdGrupos) VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', @UrlImagenPerfil, @IdDisciplina, @IdGrupo)";
 
             dataAccess.SetQuery(queryString);
 
             try
             {
                 dataAccess.SetCommandParameters("@IdGenero", nuevoProfesor.Genero.Id);
+                dataAccess.SetCommandParameters("@UrlImagenPerfil", nuevoProfesor.UrlImagenPerfil);
                 dataAccess.SetCommandParameters("@IdDisciplina", nuevoProfesor.Disciplinas.Id);
                 dataAccess.SetCommandParameters("@IdGrupo", nuevoProfesor.Grupos.Id);
 
