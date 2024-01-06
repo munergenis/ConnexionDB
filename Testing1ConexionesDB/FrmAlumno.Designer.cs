@@ -125,8 +125,11 @@
             this.DgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlumnos.Location = new System.Drawing.Point(88, 310);
             this.DgvAlumnos.Margin = new System.Windows.Forms.Padding(4);
+            this.DgvAlumnos.MultiSelect = false;
             this.DgvAlumnos.Name = "DgvAlumnos";
+            this.DgvAlumnos.ReadOnly = true;
             this.DgvAlumnos.RowHeadersWidth = 51;
+            this.DgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvAlumnos.Size = new System.Drawing.Size(1036, 292);
             this.DgvAlumnos.TabIndex = 8;
             this.DgvAlumnos.SelectionChanged += new System.EventHandler(this.DgvAlumnos_SelectionChanged);
@@ -143,6 +146,7 @@
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvAlumnos);
             this.Name = "FrmAlumno";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAlumno";
             this.Load += new System.EventHandler(this.FrmAlumno_Load);

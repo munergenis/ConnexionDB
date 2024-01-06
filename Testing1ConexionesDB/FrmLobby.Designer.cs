@@ -35,7 +35,7 @@
             // BtnProfesores
             // 
             this.BtnProfesores.Location = new System.Drawing.Point(161, 119);
-            this.BtnProfesores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnProfesores.Margin = new System.Windows.Forms.Padding(4);
             this.BtnProfesores.Name = "BtnProfesores";
             this.BtnProfesores.Size = new System.Drawing.Size(176, 84);
             this.BtnProfesores.TabIndex = 0;
@@ -46,7 +46,7 @@
             // BtnAlumnos
             // 
             this.BtnAlumnos.Location = new System.Drawing.Point(391, 119);
-            this.BtnAlumnos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAlumnos.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAlumnos.Name = "BtnAlumnos";
             this.BtnAlumnos.Size = new System.Drawing.Size(176, 84);
             this.BtnAlumnos.TabIndex = 1;
@@ -62,9 +62,10 @@
             this.Controls.Add(this.BtnAlumnos);
             this.Controls.Add(this.BtnProfesores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmLobby";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLobby";
             this.ResumeLayout(false);

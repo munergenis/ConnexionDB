@@ -19,11 +19,39 @@ namespace Testing1ConexionesDB
             InitializeComponent();
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
+        private void FrmNuevoProfesor_Load(object sender, EventArgs e)
         {
-            Close();
+            GeneroBusiness generoBusiness = new GeneroBusiness();
+            DisciplinaBusiness disciplinaBusiness = new DisciplinaBusiness();
+            GrupoBusiness grupoBusiness = new GrupoBusiness();
+
+            try
+            {
+                CbxGenero.DataSource = generoBusiness.List();
+                CbxDisciplinas.DataSource = disciplinaBusiness.List();
+                CbxGrupos.DataSource = grupoBusiness.List();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de Datos " + ex.ToString());
+            }
         }
 
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            string text = "Seguro que quieres salir?";
+            string caption = "Cerrar Formulario";
+            var buttons = MessageBoxButtons.YesNo;
+            var icon = MessageBoxIcon.Question;
+
+            var result = MessageBox.Show(text, caption, buttons, icon);
+
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+        
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             Profesor nuevoProfesor = new Profesor();
@@ -47,32 +75,11 @@ namespace Testing1ConexionesDB
 
                 profesorBusiness.AgragarProfesor(nuevoProfesor);
                 Close();
-                MessageBox.Show("Nuevo profesor agregado");
-
-                
+                MessageBox.Show("Nuevo profesor agregado");   
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar el profesor. " + ex.Message);
-            }
-
-        }
-
-        private void FrmNuevoProfesor_Load(object sender, EventArgs e)
-        {
-            GeneroBusiness generoBusiness = new GeneroBusiness();
-            DisciplinaBusiness disciplinaBusiness = new DisciplinaBusiness();
-            GrupoBusiness grupoBusiness = new GrupoBusiness();
-
-            try
-            {
-                CbxGenero.DataSource = generoBusiness.List();
-                CbxDisciplinas.DataSource = disciplinaBusiness.List();
-                CbxGrupos.DataSource = grupoBusiness.List();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se ha podido conectar a la Base de Datos " + ex.ToString());
+                MessageBox.Show("Error al agregar el profesor: " + ex.Message);
             }
         }
     }

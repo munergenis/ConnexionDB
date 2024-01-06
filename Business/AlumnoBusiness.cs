@@ -61,5 +61,41 @@ namespace Business
                 dataAccess.CloseConnection();
             }
         }
+
+        public void AgregarAlumno(Alumno nuevoAlumno)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "INSERT INTO TESTING_ALUMNOS VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @UrlImagen, @IdDisciplina, @IdGrupo)";
+            dataAccess.SetQuery(queryString);
+
+            try
+            {
+                dataAccess.SetCommandParameters("@NombreUsuario", nuevoAlumno.NombreUsuario);
+                dataAccess.SetCommandParameters("@Contraseña", nuevoAlumno.Contraseña);
+                dataAccess.SetCommandParameters("@Email", nuevoAlumno.Email);
+                dataAccess.SetCommandParameters("@Nombre", nuevoAlumno.Nombre);
+                dataAccess.SetCommandParameters("@Apellido1", nuevoAlumno.Apellido1);
+                dataAccess.SetCommandParameters("@Apellido2", nuevoAlumno.Apellido2);
+                dataAccess.SetCommandParameters("@FechaNacimiento", nuevoAlumno.FechaNacimiento);
+                dataAccess.SetCommandParameters("@IdGenero", nuevoAlumno.Genero.Id);
+                dataAccess.SetCommandParameters("@Telefono", nuevoAlumno.Telefono);
+                dataAccess.SetCommandParameters("@Direccion", nuevoAlumno.Direccion);
+                dataAccess.SetCommandParameters("@Ciudad", nuevoAlumno.Ciudad);
+                dataAccess.SetCommandParameters("@UrlImgenPerfil", "");
+                dataAccess.SetCommandParameters("@IdDisciplina", nuevoAlumno.Disciplina.Id);
+                dataAccess.SetCommandParameters("@IdGrupo", nuevoAlumno.Grupo.Id);
+
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+        }
     }
 }

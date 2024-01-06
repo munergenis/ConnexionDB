@@ -79,7 +79,7 @@
             this.GrbDatosEscuela.Name = "GrbDatosEscuela";
             this.GrbDatosEscuela.Padding = new System.Windows.Forms.Padding(4);
             this.GrbDatosEscuela.Size = new System.Drawing.Size(512, 138);
-            this.GrbDatosEscuela.TabIndex = 31;
+            this.GrbDatosEscuela.TabIndex = 3;
             this.GrbDatosEscuela.TabStop = false;
             this.GrbDatosEscuela.Text = "Datos de la Escuela";
             // 
@@ -91,7 +91,7 @@
             this.CbxGrupos.Margin = new System.Windows.Forms.Padding(4);
             this.CbxGrupos.Name = "CbxGrupos";
             this.CbxGrupos.Size = new System.Drawing.Size(265, 27);
-            this.CbxGrupos.TabIndex = 3;
+            this.CbxGrupos.TabIndex = 1;
             // 
             // CbxDisciplinas
             // 
@@ -101,7 +101,7 @@
             this.CbxDisciplinas.Margin = new System.Windows.Forms.Padding(4);
             this.CbxDisciplinas.Name = "CbxDisciplinas";
             this.CbxDisciplinas.Size = new System.Drawing.Size(265, 27);
-            this.CbxDisciplinas.TabIndex = 2;
+            this.CbxDisciplinas.TabIndex = 0;
             // 
             // LblGrupos
             // 
@@ -129,9 +129,10 @@
             this.BtnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(132, 41);
-            this.BtnAceptar.TabIndex = 28;
+            this.BtnAceptar.TabIndex = 4;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // BtnCancelar
             // 
@@ -139,7 +140,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(132, 41);
-            this.BtnCancelar.TabIndex = 29;
+            this.BtnCancelar.TabIndex = 5;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -173,7 +174,7 @@
             this.GbxDatosContacto.Name = "GbxDatosContacto";
             this.GbxDatosContacto.Padding = new System.Windows.Forms.Padding(4);
             this.GbxDatosContacto.Size = new System.Drawing.Size(512, 226);
-            this.GbxDatosContacto.TabIndex = 27;
+            this.GbxDatosContacto.TabIndex = 1;
             this.GbxDatosContacto.TabStop = false;
             this.GbxDatosContacto.Text = "Datos de Contacto";
             // 
@@ -267,7 +268,7 @@
             this.GbxDatosPersonales.Name = "GbxDatosPersonales";
             this.GbxDatosPersonales.Padding = new System.Windows.Forms.Padding(4);
             this.GbxDatosPersonales.Size = new System.Drawing.Size(512, 255);
-            this.GbxDatosPersonales.TabIndex = 26;
+            this.GbxDatosPersonales.TabIndex = 2;
             this.GbxDatosPersonales.TabStop = false;
             this.GbxDatosPersonales.Text = "Datos Personales";
             // 
@@ -279,7 +280,7 @@
             this.CbxGenero.Margin = new System.Windows.Forms.Padding(4);
             this.CbxGenero.Name = "CbxGenero";
             this.CbxGenero.Size = new System.Drawing.Size(265, 27);
-            this.CbxGenero.TabIndex = 8;
+            this.CbxGenero.TabIndex = 3;
             // 
             // LblGenero
             // 
@@ -315,7 +316,7 @@
             this.DtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
             this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             this.DtpFechaNacimiento.Size = new System.Drawing.Size(265, 27);
-            this.DtpFechaNacimiento.TabIndex = 3;
+            this.DtpFechaNacimiento.TabIndex = 4;
             // 
             // LblApellido1
             // 
@@ -375,7 +376,7 @@
             this.GbxDatosUsuario.Name = "GbxDatosUsuario";
             this.GbxDatosUsuario.Padding = new System.Windows.Forms.Padding(4);
             this.GbxDatosUsuario.Size = new System.Drawing.Size(512, 151);
-            this.GbxDatosUsuario.TabIndex = 25;
+            this.GbxDatosUsuario.TabIndex = 0;
             this.GbxDatosUsuario.TabStop = false;
             this.GbxDatosUsuario.Text = "Datos de Usuario";
             // 
@@ -428,6 +429,8 @@
             this.Controls.Add(this.GbxDatosPersonales);
             this.Controls.Add(this.GbxDatosUsuario);
             this.Name = "FrmNuevoAlumno";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmNuevoAlumno";
             this.Load += new System.EventHandler(this.FrmNuevoAlumno_Load);
             this.GrbDatosEscuela.ResumeLayout(false);

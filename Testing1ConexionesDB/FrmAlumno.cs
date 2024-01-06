@@ -29,6 +29,8 @@ namespace Testing1ConexionesDB
             {
                 listOfAlumnos = alumnoBusiness.List();
                 DgvAlumnos.DataSource = listOfAlumnos;
+                DgvAlumnos.Columns["UrlImagenPerfil"].Visible = false;
+
                 LoadImage(listOfAlumnos[0].UrlImagenPerfil);
                 LblNombreUsuario.Text = listOfAlumnos[0].NombreUsuario;
                 LblNombre.Text = listOfAlumnos[0].Nombre;

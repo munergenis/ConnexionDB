@@ -26,6 +26,8 @@ namespace Testing1ConexionesDB
             ProfesorBusiness profesores = new ProfesorBusiness();
             ListaProfesores = profesores.List();
             DgvProfesores.DataSource = ListaProfesores;
+            DgvProfesores.Columns["UrlImagenPerfil"].Visible = false;
+
             CargarImagen(ListaProfesores[0].UrlImagenPerfil);
             LblNombre.Text = ListaProfesores[0].Nombre;
             LblApellido.Text = ListaProfesores[0].Apellido1;
