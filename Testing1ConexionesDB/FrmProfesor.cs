@@ -58,6 +58,7 @@ namespace Testing1ConexionesDB
             {
                 ListaProfesores = profesores.List();
                 DgvProfesores.DataSource = ListaProfesores;
+                DgvProfesores.Columns["Id"].Visible = false;
                 DgvProfesores.Columns["UrlImagenPerfil"].Visible = false;
 
                 CargarImagen(ListaProfesores[0].UrlImagenPerfil);

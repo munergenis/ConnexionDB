@@ -24,7 +24,7 @@ namespace Testing1ConexionesDB
         public FrmNuevoProfesor(Profesor profesor)
         {
             InitializeComponent();
-            Text = "Modificar Profesor";
+            Text = "Modificar " + profesor.Nombre;
             this.profesor = profesor;
         }
 
@@ -38,12 +38,22 @@ namespace Testing1ConexionesDB
             try
             {
                 CbxGenero.DataSource = generoBusiness.List();
+                CbxGenero.ValueMember = "Id";
+                CbxGenero.DisplayMember = "Descripcion";
+
                 CbxDisciplinas.DataSource = disciplinaBusiness.List();
+                CbxDisciplinas.ValueMember = "Id";
+                CbxDisciplinas.DisplayMember = "Descripcion";
+
                 CbxGrupos.DataSource = grupoBusiness.List();
+                CbxGrupos.ValueMember = "Id";
+                CbxGrupos.DisplayMember = "Descripcion";
+
                 LoadImage(string.Empty);
 
                 if (profesor != null)
                 {
+                    LblTitle.Text = "Modificar " + profesor.Nombre;
                     TxtNombreUsuario.Text = profesor.NombreUsuario;
                     TxtContraseña.Text = profesor.Contraseña;
                     TxtEmail.Text = profesor.Email;
@@ -55,7 +65,9 @@ namespace Testing1ConexionesDB
                     TxtUrlImagenPerfil.Text = profesor.UrlImagenPerfil;
                     TxtDireccion.Text = profesor.Direccion;
                     TxtCiudad.Text = profesor.Ciudad;
-                    //Agregar Cbx precargados
+                    CbxGenero.SelectedValue = profesor.Genero.Id;
+                    CbxDisciplinas.SelectedValue = profesor.Disciplinas.Id;
+                    CbxGrupos.SelectedValue = profesor.Grupos.Id;
 
                     LoadImage(profesor.UrlImagenPerfil);
 

@@ -45,7 +45,7 @@
             // 
             this.PbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PbxFotoPerfil.Location = new System.Drawing.Point(129, 95);
-            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(5);
             this.PbxFotoPerfil.Name = "PbxFotoPerfil";
             this.PbxFotoPerfil.Size = new System.Drawing.Size(330, 305);
             this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -72,9 +72,9 @@
             this.GbxNombreUsuario.Controls.Add(this.LblNombreUsuario);
             this.GbxNombreUsuario.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GbxNombreUsuario.Location = new System.Drawing.Point(471, 95);
-            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.GbxNombreUsuario.Name = "GbxNombreUsuario";
-            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(5);
             this.GbxNombreUsuario.Size = new System.Drawing.Size(259, 101);
             this.GbxNombreUsuario.TabIndex = 6;
             this.GbxNombreUsuario.TabStop = false;
@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProfesores.Location = new System.Drawing.Point(129, 412);
-            this.DgvProfesores.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DgvProfesores.Margin = new System.Windows.Forms.Padding(5);
             this.DgvProfesores.MultiSelect = false;
             this.DgvProfesores.Name = "DgvProfesores";
             this.DgvProfesores.ReadOnly = true;
@@ -99,8 +99,6 @@
             // 
             // LblNombre
             // 
-            this.LblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.LblNombre.AutoSize = true;
             this.LblNombre.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNombre.Location = new System.Drawing.Point(471, 279);
@@ -112,8 +110,6 @@
             // 
             // LblApellido
             // 
-            this.LblApellido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.LblApellido.AutoSize = true;
             this.LblApellido.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblApellido.Location = new System.Drawing.Point(475, 348);
@@ -128,7 +124,7 @@
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnAgregar.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnAgregar.Location = new System.Drawing.Point(129, 801);
-            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(5);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(149, 45);
             this.BtnAgregar.TabIndex = 7;
@@ -138,6 +134,7 @@
             // 
             // BtnModificar
             // 
+            this.BtnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnModificar.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnModificar.Location = new System.Drawing.Point(286, 802);
             this.BtnModificar.Name = "BtnModificar";
@@ -159,9 +156,9 @@
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvProfesores);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1532, 926);
             this.Name = "FrmProfesor";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

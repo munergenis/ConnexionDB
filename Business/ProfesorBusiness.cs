@@ -19,8 +19,9 @@ namespace Business
             try
             {
                 dataAccess.SetQuery("SELECT P.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, " +
-                    "Apellido2, FechaNacimiento, GE.Genero as Genero, Telefono, Direccion, " +
-                    "Ciudad, UrlImagenPerfil, D.Disciplina as Disciplinas, GR.Grupo as Grupos " +
+                    "Apellido2, FechaNacimiento, P.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, " +
+                    "Ciudad, UrlImagenPerfil, P.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplinas, " +
+                    "P.IdGrupos as IdGrupo, GR.Grupo as Grupos " +
                     "FROM TESTING_PROFESORES P, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR " +
                     "WHERE P.IdGenero = GE.Id AND P.IdDisciplinas = D.Id AND P.IdGrupos = GR.Id");
                 dataAccess.ExecuteQuery();
@@ -37,6 +38,7 @@ namespace Business
                     aux.Apellido2 = (string)dataAccess.Reader["Apellido2"];
                     aux.FechaNacimiento = (DateTime)dataAccess.Reader["FechaNacimiento"];
                     aux.Genero = new Genero();
+                    aux.Genero.Id = (int)dataAccess.Reader["IdGenero"];
                     aux.Genero.Descripcion = (string)dataAccess.Reader["Genero"];
                     aux.Telefono = (int)dataAccess.Reader["Telefono"];
                     aux.Direccion = (string)dataAccess.Reader["Direccion"];
@@ -44,8 +46,10 @@ namespace Business
                     if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
                         aux.UrlImagenPerfil = (string)dataAccess.Reader["urlImagenPerfil"];
                     aux.Disciplinas = new Disciplina();
+                    aux.Disciplinas.Id = (int)dataAccess.Reader["IdDisciplina"];
                     aux.Disciplinas.Descripcion = (string)dataAccess.Reader["Disciplinas"];
                     aux.Grupos = new Grupo();
+                    aux.Grupos.Id = (int)dataAccess.Reader["IdGrupo"];
                     aux.Grupos.Descripcion = (string)dataAccess.Reader["Grupos"];
 
                     listOfProfesor.Add(aux);
@@ -68,13 +72,23 @@ namespace Business
         { 
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, UrlImagenPerfil, IdDisciplinas, IdGrupos) VALUES ('{nuevoProfesor.NombreUsuario}', '{nuevoProfesor.Contraseña}', '{nuevoProfesor.Email}', '{nuevoProfesor.Nombre}', '{nuevoProfesor.Apellido1}', '{nuevoProfesor.Apellido2}', '{nuevoProfesor.FechaNacimiento}', @IdGenero, {nuevoProfesor.Telefono}, '{nuevoProfesor.Direccion}', '{nuevoProfesor.Ciudad}', @UrlImagenPerfil, @IdDisciplina, @IdGrupo)";
+            string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, UrlImagenPerfil, IdDisciplinas, IdGrupos) VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @UrlImagenPerfil, @IdDisciplina, @IdGrupo)";
 
             dataAccess.SetQuery(queryString);
 
             try
             {
+                dataAccess.SetCommandParameters("@NombreUsuario", nuevoProfesor.NombreUsuario);
+                dataAccess.SetCommandParameters("@Contraseña", nuevoProfesor.Contraseña);
+                dataAccess.SetCommandParameters("@Email", nuevoProfesor.Email);
+                dataAccess.SetCommandParameters("@Nombre", nuevoProfesor.Nombre);
+                dataAccess.SetCommandParameters("@Apellido1", nuevoProfesor.Apellido1);
+                dataAccess.SetCommandParameters("@Apellido2", nuevoProfesor.Apellido2);
+                dataAccess.SetCommandParameters("@FechaNacimiento", nuevoProfesor.FechaNacimiento);
                 dataAccess.SetCommandParameters("@IdGenero", nuevoProfesor.Genero.Id);
+                dataAccess.SetCommandParameters("@Telefono", nuevoProfesor.Telefono);
+                dataAccess.SetCommandParameters("@Direccion", nuevoProfesor.Direccion);
+                dataAccess.SetCommandParameters("@Ciudad", nuevoProfesor.Ciudad);
                 dataAccess.SetCommandParameters("@UrlImagenPerfil", nuevoProfesor.UrlImagenPerfil);
                 dataAccess.SetCommandParameters("@IdDisciplina", nuevoProfesor.Disciplinas.Id);
                 dataAccess.SetCommandParameters("@IdGrupo", nuevoProfesor.Grupos.Id);
@@ -93,7 +107,44 @@ namespace Business
 
         public void ModificarProfesor(Profesor profesorModificar)
         {
+            DataAccess dataAccess = new DataAccess();
 
+            string queryString = "UPDATE TESTING_PROFESORES SET NombreUsuario = @NombreUsuario, " +
+                "Contraseña = @Contraseña, Email = @Email, Nombre = @Nombre, Apellido1 = @Apellido1, " +
+                "Apellido2 = @Apellido2, FechaNacimiento = @FechaNacimiento, IdGenero = @IdGenero, " +
+                "Telefono = @Telefono, Direccion = @Direccion, Ciudad = @Ciudad, UrlImagenPerfil = @UrlImagenPerfil, " +
+                "IdDisciplinas = @IdDisciplina, IdGrupos = @IdGrupo WHERE Id = @Id";
+
+            dataAccess.SetQuery(queryString);
+
+            try
+            {
+                dataAccess.SetCommandParameters("@NombreUsuario", profesorModificar.NombreUsuario);
+                dataAccess.SetCommandParameters("@Contraseña", profesorModificar.Contraseña);
+                dataAccess.SetCommandParameters("@Email", profesorModificar.Email);
+                dataAccess.SetCommandParameters("@Nombre", profesorModificar.Nombre);
+                dataAccess.SetCommandParameters("@Apellido1", profesorModificar.Apellido1);
+                dataAccess.SetCommandParameters("@Apellido2", profesorModificar.Apellido2);
+                dataAccess.SetCommandParameters("@FechaNacimiento", profesorModificar.FechaNacimiento);
+                dataAccess.SetCommandParameters("@IdGenero", profesorModificar.Genero.Id);
+                dataAccess.SetCommandParameters("@Telefono", profesorModificar.Telefono);
+                dataAccess.SetCommandParameters("@Direccion", profesorModificar.Direccion);
+                dataAccess.SetCommandParameters("@Ciudad", profesorModificar.Ciudad);
+                dataAccess.SetCommandParameters("@UrlImagenPerfil", profesorModificar.UrlImagenPerfil);
+                dataAccess.SetCommandParameters("@IdDisciplina", profesorModificar.Disciplinas.Id);
+                dataAccess.SetCommandParameters("@IdGrupo", profesorModificar.Grupos.Id);
+                dataAccess.SetCommandParameters("@Id", profesorModificar.Id);
+
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
         }
     }
 }
