@@ -18,7 +18,7 @@ namespace Business
 
             try
             {
-                dataAccess.SetQuery("SELECT NombreUsuario, Contraseña, Email, Nombre, Apellido1, " +
+                dataAccess.SetQuery("SELECT P.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, " +
                     "Apellido2, FechaNacimiento, GE.Genero as Genero, Telefono, Direccion, " +
                     "Ciudad, UrlImagenPerfil, D.Disciplina as Disciplinas, GR.Grupo as Grupos " +
                     "FROM TESTING_PROFESORES P, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR " +
@@ -28,6 +28,7 @@ namespace Business
                 while (dataAccess.Reader.Read())
                 {
                     Profesor aux = new Profesor();
+                    aux.Id = (int)dataAccess.Reader["Id"];
                     aux.NombreUsuario = (string)dataAccess.Reader["NombreUsuario"];
                     aux.Contraseña = (string)dataAccess.Reader["Contraseña"];
                     aux.Email = (string)dataAccess.Reader["Email"];
@@ -88,6 +89,11 @@ namespace Business
             {
                 dataAccess.CloseConnection();
             }
+        }
+
+        public void ModificarProfesor(Profesor profesorModificar)
+        {
+
         }
     }
 }

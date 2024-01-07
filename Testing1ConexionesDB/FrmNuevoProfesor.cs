@@ -55,6 +55,7 @@ namespace Testing1ConexionesDB
                     TxtUrlImagenPerfil.Text = profesor.UrlImagenPerfil;
                     TxtDireccion.Text = profesor.Direccion;
                     TxtCiudad.Text = profesor.Ciudad;
+                    //Agregar Cbx precargados
 
                     LoadImage(profesor.UrlImagenPerfil);
 
@@ -83,29 +84,41 @@ namespace Testing1ConexionesDB
         
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            Profesor nuevoProfesor = new Profesor();
             ProfesorBusiness profesorBusiness = new ProfesorBusiness();
+
+            if (profesor == null)
+                profesor = new Profesor();
 
             try
             {
-                nuevoProfesor.NombreUsuario = TxtNombreUsuario.Text;
-                nuevoProfesor.Contraseña = TxtContraseña.Text;
-                nuevoProfesor.Nombre = TxtNombre.Text;
-                nuevoProfesor.Apellido1 = TxtApellido1.Text;
-                nuevoProfesor.Apellido2 = TxtApellido2.Text;
-                nuevoProfesor.FechaNacimiento = (DateTime)DtpFechaNacimiento.Value;
-                nuevoProfesor.Email = TxtEmail.Text;
-                nuevoProfesor.Telefono = int.Parse(TxtTelefono.Text);
-                nuevoProfesor.Direccion = TxtDireccion.Text;
-                nuevoProfesor.Ciudad = TxtCiudad.Text;
-                nuevoProfesor.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
-                nuevoProfesor.Genero = (Genero)CbxGenero.SelectedItem;
-                nuevoProfesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
-                nuevoProfesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
+                profesor.NombreUsuario = TxtNombreUsuario.Text;
+                profesor.Contraseña = TxtContraseña.Text;
+                profesor.Nombre = TxtNombre.Text;
+                profesor.Apellido1 = TxtApellido1.Text;
+                profesor.Apellido2 = TxtApellido2.Text;
+                profesor.FechaNacimiento = (DateTime)DtpFechaNacimiento.Value;
+                profesor.Email = TxtEmail.Text;
+                profesor.Telefono = int.Parse(TxtTelefono.Text);
+                profesor.Direccion = TxtDireccion.Text;
+                profesor.Ciudad = TxtCiudad.Text;
+                profesor.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+                profesor.Genero = (Genero)CbxGenero.SelectedItem;
+                profesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
+                profesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
 
-                profesorBusiness.AgragarProfesor(nuevoProfesor);
+
+                if (profesor.Id != 0)
+                {
+                    profesorBusiness.ModificarProfesor(profesor);
+                    MessageBox.Show("Profesor modificado"); 
+                }
+                else
+                {
+                    profesorBusiness.AgragarProfesor(profesor);
+                    MessageBox.Show("Nuevo profesor agregado");
+                }
+
                 Close();
-                MessageBox.Show("Nuevo profesor agregado");
             }
             catch (Exception ex)
             {

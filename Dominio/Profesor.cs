@@ -9,6 +9,8 @@ namespace Dominio
 {
     public class Profesor
     {
+        public int Id { get; set; }
+
         [DisplayName("Nombre de Usuario")]
         public string NombreUsuario { get; set; }
 
