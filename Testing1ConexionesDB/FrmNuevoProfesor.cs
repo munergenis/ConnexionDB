@@ -14,9 +14,18 @@ namespace Testing1ConexionesDB
 {
     public partial class FrmNuevoProfesor : Form
     {
+        Profesor profesor = null;
+
         public FrmNuevoProfesor()
         {
             InitializeComponent();
+        }
+
+        public FrmNuevoProfesor(Profesor profesor)
+        {
+            InitializeComponent();
+            Text = "Modificar Profesor";
+            this.profesor = profesor;
         }
 
         private void FrmNuevoProfesor_Load(object sender, EventArgs e)
@@ -25,12 +34,31 @@ namespace Testing1ConexionesDB
             DisciplinaBusiness disciplinaBusiness = new DisciplinaBusiness();
             GrupoBusiness grupoBusiness = new GrupoBusiness();
 
+
             try
             {
                 CbxGenero.DataSource = generoBusiness.List();
                 CbxDisciplinas.DataSource = disciplinaBusiness.List();
                 CbxGrupos.DataSource = grupoBusiness.List();
                 LoadImage(string.Empty);
+
+                if (profesor != null)
+                {
+                    TxtNombreUsuario.Text = profesor.NombreUsuario;
+                    TxtContraseña.Text = profesor.Contraseña;
+                    TxtEmail.Text = profesor.Email;
+                    TxtNombre.Text = profesor.Nombre;
+                    TxtApellido1.Text = profesor.Apellido1;
+                    TxtApellido2.Text = profesor.Apellido2;
+                    TxtTelefono.Text = profesor.Telefono.ToString();
+                    DtpFechaNacimiento.Value = profesor.FechaNacimiento;
+                    TxtUrlImagenPerfil.Text = profesor.UrlImagenPerfil;
+                    TxtDireccion.Text = profesor.Direccion;
+                    TxtCiudad.Text = profesor.Ciudad;
+
+                    LoadImage(profesor.UrlImagenPerfil);
+
+                }
             }
             catch (Exception ex)
             {

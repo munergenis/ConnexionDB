@@ -35,6 +35,22 @@ namespace Testing1ConexionesDB
             LblApellido.Text = seleccionado.Apellido1;
             LblNombreUsuario.Text = seleccionado.NombreUsuario;
         }
+        
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmNuevoProfesor frmNuevoProfesor = new FrmNuevoProfesor();
+            frmNuevoProfesor.ShowDialog();
+            LoadData();
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            Profesor profesorSeleccionado = (Profesor)DgvProfesores.CurrentRow.DataBoundItem;
+
+            FrmNuevoProfesor frmModificarProfesor = new FrmNuevoProfesor(profesorSeleccionado);
+            frmModificarProfesor.ShowDialog();
+            LoadData();
+        }
 
         private void LoadData()
         {
@@ -67,11 +83,5 @@ namespace Testing1ConexionesDB
             }
         }
 
-        private void BtnAgregar_Click(object sender, EventArgs e)
-        {
-            FrmNuevoProfesor frmNuevoProfesor = new FrmNuevoProfesor();
-            frmNuevoProfesor.ShowDialog();
-            LoadData();
-        }
     }
 }
