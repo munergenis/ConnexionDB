@@ -17,7 +17,7 @@ namespace Business
             List<Alumno> listOfAlumno = new List<Alumno>();
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = "SELECT A.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento,A.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, A.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplina, A.IdGrupos as IdGrupo, GR.Grupo as Grupo FROM TESTING_ALUMNOS A, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR WHERE A.IdGenero = GE.Id AND A.IdDisciplinas = D.Id AND A.IdGrupos = GR.Id";
+            string queryString = "SELECT A.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento,A.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, A.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplina, A.IdGrupos as IdGrupo, GR.Grupo as Grupo FROM TESTING_ALUMNOS A, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR WHERE A.IdGenero = GE.Id AND A.IdDisciplinas = D.Id AND A.IdGrupos = GR.Id AND A.Activo = 1";
             dataAccess.SetQuery(queryString);
 
             try
@@ -164,6 +164,28 @@ namespace Business
             finally
             { 
                 dataAccess.CloseConnection(); 
+            }
+        }
+
+        public void DeshabilitarAlumno(Alumno alumnoDeshabilitar)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "UPDATE TESTING_ALUMNOS SET Activo = 0 WHERE Id = @Id";
+            dataAccess.SetQuery(queryString);
+
+            dataAccess.SetCommandParameters("@Id", alumnoDeshabilitar.Id);
+            try
+            {
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
             }
         }
     }

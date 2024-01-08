@@ -37,6 +37,7 @@
             this.DgvAlumnos = new System.Windows.Forms.DataGridView();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnEliminarFisico = new System.Windows.Forms.Button();
+            this.BtnDeshabilitar = new System.Windows.Forms.Button();
             this.GbxNombreUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvAlumnos)).BeginInit();
@@ -159,11 +160,23 @@
             this.BtnEliminarFisico.UseVisualStyleBackColor = true;
             this.BtnEliminarFisico.Click += new System.EventHandler(this.BtnEliminarFisico_Click);
             // 
+            // BtnDeshabilitar
+            // 
+            this.BtnDeshabilitar.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.BtnDeshabilitar.Location = new System.Drawing.Point(422, 777);
+            this.BtnDeshabilitar.Name = "BtnDeshabilitar";
+            this.BtnDeshabilitar.Size = new System.Drawing.Size(149, 45);
+            this.BtnDeshabilitar.TabIndex = 16;
+            this.BtnDeshabilitar.Text = "Deshabilitar";
+            this.BtnDeshabilitar.UseVisualStyleBackColor = true;
+            this.BtnDeshabilitar.Click += new System.EventHandler(this.BtnDeshabilitar_Click);
+            // 
             // FrmAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1516, 891);
+            this.Controls.Add(this.BtnDeshabilitar);
             this.Controls.Add(this.BtnEliminarFisico);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
@@ -200,5 +213,6 @@
         private System.Windows.Forms.DataGridView DgvAlumnos;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnEliminarFisico;
+        private System.Windows.Forms.Button BtnDeshabilitar;
     }
 }
