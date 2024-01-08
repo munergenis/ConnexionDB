@@ -36,6 +36,8 @@
             this.LblApellido = new System.Windows.Forms.Label();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnModificar = new System.Windows.Forms.Button();
+            this.BtnEliminarFisico = new System.Windows.Forms.Button();
+            this.BtnDeshabilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).BeginInit();
             this.GbxNombreUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvProfesores)).BeginInit();
@@ -136,7 +138,7 @@
             // 
             this.BtnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnModificar.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.BtnModificar.Location = new System.Drawing.Point(286, 802);
+            this.BtnModificar.Location = new System.Drawing.Point(286, 801);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(149, 45);
             this.BtnModificar.TabIndex = 8;
@@ -144,11 +146,35 @@
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
+            // BtnEliminarFisico
+            // 
+            this.BtnEliminarFisico.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.BtnEliminarFisico.Location = new System.Drawing.Point(1275, 801);
+            this.BtnEliminarFisico.Name = "BtnEliminarFisico";
+            this.BtnEliminarFisico.Size = new System.Drawing.Size(149, 45);
+            this.BtnEliminarFisico.TabIndex = 9;
+            this.BtnEliminarFisico.Text = "Eliminar";
+            this.BtnEliminarFisico.UseVisualStyleBackColor = true;
+            this.BtnEliminarFisico.Click += new System.EventHandler(this.BtnEliminarFisico_Click);
+            // 
+            // BtnDeshabilitar
+            // 
+            this.BtnDeshabilitar.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.BtnDeshabilitar.Location = new System.Drawing.Point(441, 801);
+            this.BtnDeshabilitar.Name = "BtnDeshabilitar";
+            this.BtnDeshabilitar.Size = new System.Drawing.Size(149, 45);
+            this.BtnDeshabilitar.TabIndex = 10;
+            this.BtnDeshabilitar.Text = "Deshabilitar";
+            this.BtnDeshabilitar.UseVisualStyleBackColor = true;
+            this.BtnDeshabilitar.Click += new System.EventHandler(this.BtnDeshabilitar_Click);
+            // 
             // FrmProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1516, 891);
+            this.Controls.Add(this.BtnDeshabilitar);
+            this.Controls.Add(this.BtnEliminarFisico);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.GbxNombreUsuario);
@@ -183,6 +209,8 @@
         private System.Windows.Forms.Label LblApellido;
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Button BtnModificar;
+        private System.Windows.Forms.Button BtnEliminarFisico;
+        private System.Windows.Forms.Button BtnDeshabilitar;
     }
 }
 

@@ -52,6 +52,58 @@ namespace Testing1ConexionesDB
             LoadData();
         }
 
+        private void BtnEliminarFisico_Click(object sender, EventArgs e)
+        {
+            Profesor profesorElminiar = (Profesor)DgvProfesores.CurrentRow.DataBoundItem;
+
+            string text = "El profesor será eliminado PERMANENTEMENTE. ¿Deseas continuar?";
+            string caption = "ELIMINAR DEFINITIVAMENTE";
+            var buttons = MessageBoxButtons.YesNo;
+            var icon = MessageBoxIcon.Warning;
+
+            var result = MessageBox.Show(text, caption, buttons, icon);
+
+            try
+            {
+                if (result == DialogResult.Yes)
+                {
+                    profesores.EliminarFisico(profesorElminiar);
+                    MessageBox.Show("Profesor eliminado", "Eliminado");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar profesor: " + ex.ToString());
+            }
+        }
+
+        private void BtnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            Profesor profesorDeshabilitar = (Profesor)DgvProfesores.CurrentRow.DataBoundItem;
+
+            string text = "¿Seguro que quieres deshabilitar este profesor?";
+            string caption = "Deshabilitar Profesor";
+            var buttons = MessageBoxButtons.YesNo;
+            var icon = MessageBoxIcon.Exclamation;
+
+            var result = MessageBox.Show(text, caption, buttons, icon);
+
+            try
+            {
+                if (result == DialogResult.Yes)
+                {
+                    profesores.DeshabilitarProfesor(profesorDeshabilitar);
+                    MessageBox.Show("Profesor deshabilitado", "Profesor deshabilitado");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al deshabilitar profesor: " + ex.ToString());
+            }
+        }
+        
         private void LoadData()
         {
             try
@@ -83,6 +135,5 @@ namespace Testing1ConexionesDB
                 PbxFotoPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
-
     }
 }

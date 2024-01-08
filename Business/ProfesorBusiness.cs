@@ -23,7 +23,7 @@ namespace Business
                     "Ciudad, UrlImagenPerfil, P.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplinas, " +
                     "P.IdGrupos as IdGrupo, GR.Grupo as Grupos " +
                     "FROM TESTING_PROFESORES P, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR " +
-                    "WHERE P.IdGenero = GE.Id AND P.IdDisciplinas = D.Id AND P.IdGrupos = GR.Id");
+                    "WHERE P.IdGenero = GE.Id AND P.IdDisciplinas = D.Id AND P.IdGrupos = GR.Id AND P.Activo = 1");
                 dataAccess.ExecuteQuery();
 
                 while (dataAccess.Reader.Read())
@@ -135,6 +135,52 @@ namespace Business
                 dataAccess.SetCommandParameters("@IdGrupo", profesorModificar.Grupos.Id);
                 dataAccess.SetCommandParameters("@Id", profesorModificar.Id);
 
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+        }
+
+        public void EliminarFisico(Profesor profesorEliminar)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "DELETE FROM TESTING_PROFESORES WHERE Id = @Id";
+            dataAccess.SetQuery(queryString);
+
+            dataAccess.SetCommandParameters("@Id", profesorEliminar.Id);
+
+            try
+            {
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally 
+            { 
+                dataAccess.CloseConnection(); 
+            }
+        }
+
+        public void DeshabilitarProfesor(Profesor profesorDeshabilitar)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "UPDATE TESTING_PROFESORES SET Activo = 0 WHERE Id = @Id";
+            dataAccess.SetQuery(queryString);
+
+            dataAccess.SetCommandParameters("@Id", profesorDeshabilitar.Id);
+
+            try
+            {
                 dataAccess.ExecuteNonQuery();
             }
             catch (Exception ex)
