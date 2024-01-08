@@ -36,6 +36,7 @@
             this.PbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.DgvAlumnos = new System.Windows.Forms.DataGridView();
             this.BtnModificar = new System.Windows.Forms.Button();
+            this.BtnEliminarFisico = new System.Windows.Forms.Button();
             this.GbxNombreUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxFotoPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvAlumnos)).BeginInit();
@@ -46,7 +47,7 @@
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnAgregar.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.BtnAgregar.Location = new System.Drawing.Point(110, 776);
-            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(5);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(149, 45);
             this.BtnAgregar.TabIndex = 13;
@@ -60,9 +61,9 @@
             this.GbxNombreUsuario.Controls.Add(this.LblNombreUsuario);
             this.GbxNombreUsuario.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GbxNombreUsuario.Location = new System.Drawing.Point(452, 70);
-            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.GbxNombreUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.GbxNombreUsuario.Name = "GbxNombreUsuario";
-            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.GbxNombreUsuario.Padding = new System.Windows.Forms.Padding(5);
             this.GbxNombreUsuario.Size = new System.Drawing.Size(259, 101);
             this.GbxNombreUsuario.TabIndex = 12;
             this.GbxNombreUsuario.TabStop = false;
@@ -112,7 +113,7 @@
             // 
             this.PbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PbxFotoPerfil.Location = new System.Drawing.Point(110, 70);
-            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PbxFotoPerfil.Margin = new System.Windows.Forms.Padding(5);
             this.PbxFotoPerfil.Name = "PbxFotoPerfil";
             this.PbxFotoPerfil.Size = new System.Drawing.Size(330, 305);
             this.PbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -126,7 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlumnos.Location = new System.Drawing.Point(110, 388);
-            this.DgvAlumnos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DgvAlumnos.Margin = new System.Windows.Forms.Padding(5);
             this.DgvAlumnos.MultiSelect = false;
             this.DgvAlumnos.Name = "DgvAlumnos";
             this.DgvAlumnos.ReadOnly = true;
@@ -147,11 +148,23 @@
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
+            // BtnEliminarFisico
+            // 
+            this.BtnEliminarFisico.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.BtnEliminarFisico.Location = new System.Drawing.Point(1256, 776);
+            this.BtnEliminarFisico.Name = "BtnEliminarFisico";
+            this.BtnEliminarFisico.Size = new System.Drawing.Size(149, 45);
+            this.BtnEliminarFisico.TabIndex = 15;
+            this.BtnEliminarFisico.Text = "Eliminar";
+            this.BtnEliminarFisico.UseVisualStyleBackColor = true;
+            this.BtnEliminarFisico.Click += new System.EventHandler(this.BtnEliminarFisico_Click);
+            // 
             // FrmAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1516, 891);
+            this.Controls.Add(this.BtnEliminarFisico);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.GbxNombreUsuario);
@@ -159,7 +172,7 @@
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.PbxFotoPerfil);
             this.Controls.Add(this.DgvAlumnos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmAlumno";
             this.ShowIcon = false;
@@ -186,5 +199,6 @@
         private System.Windows.Forms.PictureBox PbxFotoPerfil;
         private System.Windows.Forms.DataGridView DgvAlumnos;
         private System.Windows.Forms.Button BtnModificar;
+        private System.Windows.Forms.Button BtnEliminarFisico;
     }
 }

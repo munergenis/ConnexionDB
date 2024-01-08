@@ -52,6 +52,32 @@ namespace Testing1ConexionesDB
             LoadData();
         }
 
+        private void BtnEliminarFisico_Click(object sender, EventArgs e)
+        {
+            Alumno seleccionado = (Alumno)DgvAlumnos.CurrentRow.DataBoundItem;
+
+            string text = "El alumno será eliminado PERMANENTEMENTE. ¿Deseas continuar?";
+            string caption = "ELIMINAR DEFINITIVAMENTE";
+            var button = MessageBoxButtons.YesNo;
+            var icon = MessageBoxIcon.Warning;
+
+            var result = MessageBox.Show(text, caption, button, icon);
+
+            try
+            {
+                if (result == DialogResult.Yes)
+                {
+                    alumnoBusiness.EliminarFisico(seleccionado);
+                    MessageBox.Show("Alumno eliminado", "Eliminado");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar alumno: " + ex.ToString());
+            }
+        }
+
         private void LoadData()
         {
             try
@@ -82,5 +108,6 @@ namespace Testing1ConexionesDB
                 PbxFotoPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
+
     }
 }

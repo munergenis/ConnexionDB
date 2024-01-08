@@ -143,5 +143,28 @@ namespace Business
                 dataAccess.CloseConnection();
             }
         }
+
+        public void EliminarFisico(Alumno alumnoEliminar)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "DELETE FROM TESTING_ALUMNOS WHERE Id = @Id";
+            dataAccess.SetQuery(queryString);
+
+            dataAccess.SetCommandParameters("@Id", alumnoEliminar.Id);
+
+            try
+            {
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            { 
+                dataAccess.CloseConnection(); 
+            }
+        }
     }
 }
