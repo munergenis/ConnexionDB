@@ -17,7 +17,7 @@ namespace Business
             List<Alumno> listOfAlumno = new List<Alumno>();
             DataAccess dataAccess = new DataAccess();
 
-            string queryString = "SELECT A.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, D.Disciplina as Disciplina, GR.Grupo as Grupo FROM TESTING_ALUMNOS A, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR WHERE A.IdGenero = GE.Id AND A.IdDisciplinas = D.Id AND A.IdGrupos = GR.Id";
+            string queryString = "SELECT A.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento,A.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, A.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplina, A.IdGrupos as IdGrupo, GR.Grupo as Grupo FROM TESTING_ALUMNOS A, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR WHERE A.IdGenero = GE.Id AND A.IdDisciplinas = D.Id AND A.IdGrupos = GR.Id";
             dataAccess.SetQuery(queryString);
 
             try
@@ -36,6 +36,7 @@ namespace Business
                     aux.Apellido2 = (string)dataAccess.Reader["Apellido2"];
                     aux.FechaNacimiento = (DateTime)dataAccess.Reader["FechaNacimiento"];
                     aux.Genero = new Genero();
+                    aux.Genero.Id = (int)dataAccess.Reader["IdGenero"];
                     aux.Genero.Descripcion = (string)dataAccess.Reader["Genero"];
                     aux.Telefono = (int)dataAccess.Reader["Telefono"];
                     aux.Direccion = (string)dataAccess.Reader["Direccion"];
@@ -43,8 +44,10 @@ namespace Business
                     if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
                         aux.UrlImagenPerfil = (string)dataAccess.Reader["UrlImagenPerfil"];
                     aux.Disciplina = new Disciplina();
+                    aux.Disciplina.Id = (int)dataAccess.Reader["IdDisciplina"];
                     aux.Disciplina.Descripcion = (string)dataAccess.Reader["Disciplina"];
                     aux.Grupo = new Grupo();
+                    aux.Grupo.Id = (int)dataAccess.Reader["IdGrupo"];
                     aux.Grupo.Descripcion = (string)dataAccess.Reader["Grupo"];
 
                     listOfAlumno.Add(aux);
@@ -87,6 +90,48 @@ namespace Business
                 dataAccess.SetCommandParameters("@IdDisciplina", nuevoAlumno.Disciplina.Id);
                 dataAccess.SetCommandParameters("@IdGrupo", nuevoAlumno.Grupo.Id);
 
+                dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+        }
+
+        public void ModificarAlumno(Alumno alumnoModificar)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            string queryString = "UPDATE TESTING_ALUMNOS SET NombreUsuario = @NombreUsuario, " +
+                "Contraseña = @Contraseña, Email = @Email, Nombre = @Nombre, Apellido1 = @Apellido1, " +
+                "Apellido2 = @Apellido2, FechaNacimiento = @FechaNacimiento, IdGenero = @IdGenero, " +
+                "Telefono = @Telefono, Direccion = @Direccion, Ciudad = @Ciudad, " +
+                "UrlImagenPerfil = @UrlImagenPerfil, IdDisciplinas = @IdDisciplina, IdGrupos = @IdGrupo " +
+                "WHERE Id = @Id";
+            dataAccess.SetQuery(queryString);
+
+            dataAccess.SetCommandParameters("@NombreUsuario", alumnoModificar.NombreUsuario);
+            dataAccess.SetCommandParameters("@Contraseña", alumnoModificar.Contraseña);
+            dataAccess.SetCommandParameters("@Email", alumnoModificar.Email);
+            dataAccess.SetCommandParameters("@Nombre", alumnoModificar.Nombre);
+            dataAccess.SetCommandParameters("@Apellido1", alumnoModificar.Apellido1);
+            dataAccess.SetCommandParameters("@Apellido2", alumnoModificar.Apellido2);
+            dataAccess.SetCommandParameters("@FechaNacimiento", alumnoModificar.FechaNacimiento);
+            dataAccess.SetCommandParameters("@IdGenero", alumnoModificar.Genero.Id);
+            dataAccess.SetCommandParameters("@Telefono", alumnoModificar.Telefono);
+            dataAccess.SetCommandParameters("@Direccion", alumnoModificar.Direccion);
+            dataAccess.SetCommandParameters("@Ciudad", alumnoModificar.Ciudad);
+            dataAccess.SetCommandParameters("@UrlImagenPerfil", alumnoModificar.UrlImagenPerfil);
+            dataAccess.SetCommandParameters("@IdDisciplina", alumnoModificar.Disciplina.Id);
+            dataAccess.SetCommandParameters("@IdGrupo", alumnoModificar.Grupo.Id);
+            dataAccess.SetCommandParameters("@Id", alumnoModificar.Id);
+
+            try
+            {
                 dataAccess.ExecuteNonQuery();
             }
             catch (Exception ex)

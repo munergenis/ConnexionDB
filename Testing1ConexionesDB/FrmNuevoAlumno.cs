@@ -14,9 +14,18 @@ namespace Testing1ConexionesDB
 {
     public partial class FrmNuevoAlumno : Form
     {
+        Alumno alumno = null;
+
         public FrmNuevoAlumno()
         {
             InitializeComponent();
+        }
+
+        public FrmNuevoAlumno(Alumno alumnoModificar)
+        {
+            InitializeComponent();
+            alumno = alumnoModificar;
+            Text = "Modificar " + alumno.Nombre;
         }
 
         private void FrmNuevoAlumno_Load(object sender, EventArgs e)
@@ -28,9 +37,40 @@ namespace Testing1ConexionesDB
             try
             {
                 CbxGenero.DataSource = generoBusiness.List();
+                CbxGenero.ValueMember = "Id";
+                CbxGenero.DisplayMember = "Descripcion";
+
                 CbxDisciplinas.DataSource = disciplinaBusiness.List();
+                CbxDisciplinas.ValueMember = "Id";
+                CbxDisciplinas.DisplayMember = "Descripcion";
+
                 CbxGrupos.DataSource = grupoBusiness.List();
-                LoadImage(string.Empty);
+                CbxGrupos.ValueMember = "Id";
+                CbxGrupos.DisplayMember = "Descripcion";
+
+                if (alumno != null)
+                {
+                    LblTitle.Text = "Modificar " + alumno.Nombre;
+                    TxtNombreUsuario.Text = alumno.NombreUsuario;
+                    TxtContraseña.Text = alumno.Contraseña;
+                    TxtNombre.Text = alumno.Nombre;
+                    TxtApellido1.Text = alumno.Apellido1;
+                    TxtApellido2.Text = alumno.Apellido2;
+                    DtpFechaNacimiento.Value = alumno.FechaNacimiento;
+                    TxtEmail.Text = alumno.Email;
+                    TxtTelefono.Text = alumno.Telefono.ToString();
+                    TxtDireccion.Text = alumno.Direccion;
+                    TxtCiudad.Text = alumno.Ciudad;
+                    TxtUrlImagenPerfil.Text = alumno.UrlImagenPerfil;
+                    LoadImage(TxtUrlImagenPerfil.Text);
+                    CbxGenero.SelectedValue = alumno.Genero.Id;
+                    CbxDisciplinas.SelectedValue = alumno.Disciplina.Id;
+                    CbxGrupos.SelectedValue = alumno.Grupo.Id;
+                }
+                else
+                {
+                    LoadImage(string.Empty);
+                }
             }
             catch (Exception ex)
             {
@@ -55,29 +95,42 @@ namespace Testing1ConexionesDB
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            Alumno nuevoAlumno = new Alumno();
             AlumnoBusiness alumnoBusiness = new AlumnoBusiness();
 
-            nuevoAlumno.NombreUsuario = TxtNombreUsuario.Text;
-            nuevoAlumno.Contraseña = TxtContraseña.Text;
-            nuevoAlumno.Email = TxtEmail.Text;
-            nuevoAlumno.Nombre = TxtNombre.Text;
-            nuevoAlumno.Apellido1 = TxtApellido1.Text;
-            nuevoAlumno.Apellido2 = TxtApellido2.Text;
-            nuevoAlumno.FechaNacimiento = DtpFechaNacimiento.Value;
-            nuevoAlumno.Genero = (Genero)CbxGenero.SelectedItem;
-            nuevoAlumno.Telefono = int.Parse(TxtTelefono.Text);
-            nuevoAlumno.Direccion = TxtDireccion.Text;
-            nuevoAlumno.Ciudad = TxtCiudad.Text;
-            nuevoAlumno.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
-            nuevoAlumno.Disciplina = (Disciplina)CbxDisciplinas.SelectedItem;
-            nuevoAlumno.Grupo = (Grupo)CbxGrupos.SelectedItem;
+            if (alumno == null)
+            {
+                alumno = new Alumno();
+            }
+
+            alumno.NombreUsuario = TxtNombreUsuario.Text;
+            alumno.Contraseña = TxtContraseña.Text;
+            alumno.Email = TxtEmail.Text;
+            alumno.Nombre = TxtNombre.Text;
+            alumno.Apellido1 = TxtApellido1.Text;
+            alumno.Apellido2 = TxtApellido2.Text;
+            alumno.FechaNacimiento = DtpFechaNacimiento.Value;
+            alumno.Genero = (Genero)CbxGenero.SelectedItem;
+            alumno.Telefono = int.Parse(TxtTelefono.Text);
+            alumno.Direccion = TxtDireccion.Text;
+            alumno.Ciudad = TxtCiudad.Text;
+            alumno.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+            alumno.Disciplina = (Disciplina)CbxDisciplinas.SelectedItem;
+            alumno.Grupo = (Grupo)CbxGrupos.SelectedItem;
 
             try
             {
-                alumnoBusiness.AgregarAlumno(nuevoAlumno);
+                if (alumno.Id != 0)
+                {
+                    alumnoBusiness.ModificarAlumno(alumno);
+                    MessageBox.Show("Alumno modificado");
+                }
+                else
+                {
+                    alumnoBusiness.AgregarAlumno(alumno);
+                    MessageBox.Show("Nuevo alumno agregado");
+                }
+
                 Close();
-                MessageBox.Show("Nuevo alumno agregado");
             }
             catch (Exception ex)
             {
