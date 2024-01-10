@@ -104,6 +104,15 @@ namespace Testing1ConexionesDB
             }
         }
         
+        private void TxtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Profesor> listaFiltrada;
+            
+            listaFiltrada = ListaProfesores.FindAll(x => x.Nombre.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Apellido1.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Disciplinas.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Grupos.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()));
+
+            DgvProfesores.DataSource = listaFiltrada;
+        }
+
         private void LoadData()
         {
             try
@@ -135,5 +144,6 @@ namespace Testing1ConexionesDB
                 PbxFotoPerfil.Load("https://th.bing.com/th/id/OIG.B0QdXb93IrIqv0h68bQK?pid=ImgGn");
             }
         }
+
     }
 }

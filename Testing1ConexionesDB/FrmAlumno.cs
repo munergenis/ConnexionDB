@@ -78,6 +78,41 @@ namespace Testing1ConexionesDB
             }
         }
 
+        private void BtnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            Alumno seleccionado = (Alumno)DgvAlumnos.CurrentRow.DataBoundItem;
+
+            string text = "¿Seguro que quieres deshabilitar este alumno?";
+            string caption = "Deshabilitar Alumno";
+            var buttons =  MessageBoxButtons.YesNo ;
+            var icon = MessageBoxIcon.Warning;
+
+            var result = MessageBox.Show(text, caption, buttons, icon);
+
+            try
+            {
+                if (result == DialogResult.Yes)
+                {
+                    alumnoBusiness.DeshabilitarAlumno(seleccionado);
+                    MessageBox.Show("Alumno deshabilitado", "Alumno Deshabilitado");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al deshabilitar el alumno: " + ex.ToString());
+            }
+        }
+
+        private void TxtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Alumno> listaFiltrada;
+
+            listaFiltrada = listOfAlumnos.FindAll(x => x.Nombre.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Apellido1.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Disciplina.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Grupo.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()));
+
+            DgvAlumnos.DataSource = listaFiltrada;
+        }
+
         private void LoadData()
         {
             try
@@ -109,30 +144,5 @@ namespace Testing1ConexionesDB
             }
         }
 
-        private void BtnDeshabilitar_Click(object sender, EventArgs e)
-        {
-            Alumno seleccionado = (Alumno)DgvAlumnos.CurrentRow.DataBoundItem;
-
-            string text = "¿Seguro que quieres deshabilitar este alumno?";
-            string caption = "Deshabilitar Alumno";
-            var buttons =  MessageBoxButtons.YesNo ;
-            var icon = MessageBoxIcon.Warning;
-
-            var result = MessageBox.Show(text, caption, buttons, icon);
-
-            try
-            {
-                if (result == DialogResult.Yes)
-                {
-                    alumnoBusiness.DeshabilitarAlumno(seleccionado);
-                    MessageBox.Show("Alumno deshabilitado", "Alumno Deshabilitado");
-                    LoadData();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al deshabilitar el alumno: " + ex.ToString());
-            }
-        }
     }
 }
