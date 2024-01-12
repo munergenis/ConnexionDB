@@ -69,7 +69,7 @@ namespace Business
         }
 
         public void AgragarProfesor(Profesor nuevoProfesor)
-        { 
+        {
             DataAccess dataAccess = new DataAccess();
 
             string queryString = $"INSERT INTO TESTING_PROFESORES (NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, IdGenero, Telefono, Direccion, Ciudad, UrlImagenPerfil, IdDisciplinas, IdGrupos) VALUES (@NombreUsuario, @Contraseña, @Email, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @IdGenero, @Telefono, @Direccion, @Ciudad, @UrlImagenPerfil, @IdDisciplina, @IdGrupo)";
@@ -164,9 +164,9 @@ namespace Business
             {
                 throw ex;
             }
-            finally 
-            { 
-                dataAccess.CloseConnection(); 
+            finally
+            {
+                dataAccess.CloseConnection();
             }
         }
 
@@ -182,6 +182,113 @@ namespace Business
             try
             {
                 dataAccess.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+        }
+
+        public List<Profesor> FiltroAvanzado(string campo, string criterio, string texto)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<Profesor> listaFiltroAvanzado = new List<Profesor>();
+
+
+            if (campo == "Teléfono")
+            {
+                campo = "Telefono";
+
+                switch (criterio)
+                {
+                    case "Mayor a":
+                        criterio = ">";
+                        break;
+
+                    case "Menor a":
+                        criterio = "<";
+                        break;
+
+                    default:
+                        criterio = "=";
+                        break;
+                }
+            }
+            else
+            {
+                if (campo == "Primer apellido")
+                    campo = "Apellido1";
+
+                switch (criterio)
+                {
+                    case "Empieza con":
+                        texto = $"'{texto}%'";
+                        break;
+
+                    case "Termina con":
+                        texto = $"'%{texto}'";
+                        break;
+
+                    default:
+                        texto = $"'%{texto}%'";
+                        break;
+                }
+                criterio = "like";
+            }
+
+            string queryString = "SELECT P.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento, P.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, P.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplinas, P.IdGrupos as IdGrupo, GR.Grupo as Grupos " +
+                "FROM TESTING_PROFESORES P, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR " +
+                "WHERE P.IdGenero = GE.Id " +
+                "AND P.IdDisciplinas = D.Id " +
+                "AND P.IdGrupos = GR.Id " +
+                "AND P.Activo = 1" +
+                $"AND {campo} {criterio} {texto}";  //Nombre like 'Ant%'
+
+            dataAccess.SetQuery(queryString);
+
+            try
+            {
+
+
+                Console.WriteLine(queryString);
+
+
+                dataAccess.ExecuteQuery();
+
+                while (dataAccess.Reader.Read())
+                {
+                    Profesor aux = new Profesor();
+                    aux.Id = (int)dataAccess.Reader["Id"];
+                    aux.NombreUsuario = (string)dataAccess.Reader["NombreUsuario"];
+                    aux.Contraseña = (string)dataAccess.Reader["Contraseña"];
+                    aux.Email = (string)dataAccess.Reader["Email"];
+                    aux.Nombre = (string)dataAccess.Reader["Nombre"];
+                    aux.Apellido1 = (string)dataAccess.Reader["Apellido1"];
+                    aux.Apellido2 = (string)dataAccess.Reader["Apellido2"];
+                    aux.FechaNacimiento = (DateTime)dataAccess.Reader["FechaNacimiento"];
+                    aux.Genero = new Genero();
+                    aux.Genero.Id = (int)dataAccess.Reader["IdGenero"];
+                    aux.Genero.Descripcion = (string)dataAccess.Reader["Genero"];
+                    aux.Telefono = (int)dataAccess.Reader["Telefono"];
+                    aux.Direccion = (string)dataAccess.Reader["Direccion"];
+                    aux.Ciudad = (string)dataAccess.Reader["Ciudad"];
+                    if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
+                        aux.UrlImagenPerfil = (string)dataAccess.Reader["urlImagenPerfil"];
+                    aux.Disciplinas = new Disciplina();
+                    aux.Disciplinas.Id = (int)dataAccess.Reader["IdDisciplina"];
+                    aux.Disciplinas.Descripcion = (string)dataAccess.Reader["Disciplinas"];
+                    aux.Grupos = new Grupo();
+                    aux.Grupos.Id = (int)dataAccess.Reader["IdGrupo"];
+                    aux.Grupos.Descripcion = (string)dataAccess.Reader["Grupos"];
+
+                    listaFiltroAvanzado.Add(aux);
+                }
+
+                return listaFiltroAvanzado;
             }
             catch (Exception ex)
             {

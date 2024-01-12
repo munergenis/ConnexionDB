@@ -25,6 +25,12 @@ namespace Testing1ConexionesDB
         private void FrmAlumno_Load(object sender, EventArgs e)
         {
             LoadData();
+
+            CbxCampos.Items.Add("Teléfono");
+            CbxCampos.Items.Add("Nombre");
+            CbxCampos.Items.Add("Primer Apellido");
+
+            CbxCampos.SelectedIndex = 0;
         }
 
         private void DgvAlumnos_SelectionChanged(object sender, EventArgs e)
@@ -144,5 +150,42 @@ namespace Testing1ConexionesDB
             }
         }
 
+        private void CbxCampos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CbxCampos.SelectedItem.ToString() == "Teléfono")
+            {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Mayor a");
+                CbxCriterio.Items.Add("Menor a");
+                CbxCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Empieza con");
+                CbxCriterio.Items.Add("Termina con");
+                CbxCriterio.Items.Add("Contiene");
+            }
+
+            CbxCriterio.SelectedIndex = 0;
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            string campo = CbxCampos.SelectedItem.ToString();
+            string criterio = CbxCriterio.SelectedItem.ToString();
+            string texto = TxtFiltroAvanzado.Text;
+
+            DgvAlumnos.DataSource = alumnoBusiness.FiltroAvanzado(campo, criterio, texto);
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            DgvAlumnos.DataSource = listOfAlumnos;
+
+            CbxCampos.SelectedIndex = 0;
+            CbxCriterio.SelectedIndex = 0;
+            TxtFiltroAvanzado.Text = "";
+        }
     }
 }

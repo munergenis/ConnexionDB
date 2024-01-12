@@ -25,6 +25,10 @@ namespace Testing1ConexionesDB
         private void FrmProfesor_Load(object sender, EventArgs e)
         {
             LoadData();
+
+            CbxCampos.Items.Add("Teléfono");
+            CbxCampos.Items.Add("Nombre");
+            CbxCampos.Items.Add("Primer apellido");
         }
 
         private void DgvProfesores_SelectionChanged(object sender, EventArgs e)
@@ -35,7 +39,7 @@ namespace Testing1ConexionesDB
             LblApellido.Text = seleccionado.Apellido1;
             LblNombreUsuario.Text = seleccionado.NombreUsuario;
         }
-        
+
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmNuevoProfesor frmNuevoProfesor = new FrmNuevoProfesor();
@@ -103,14 +107,48 @@ namespace Testing1ConexionesDB
                 MessageBox.Show("Error al deshabilitar profesor: " + ex.ToString());
             }
         }
-        
+
         private void TxtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Profesor> listaFiltrada;
-            
+
             listaFiltrada = ListaProfesores.FindAll(x => x.Nombre.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Apellido1.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Disciplinas.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()) || x.Grupos.Descripcion.ToUpper().Contains(TxtFiltro.Text.ToUpper()));
 
             DgvProfesores.DataSource = listaFiltrada;
+        }
+
+        private void CbxCampos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CbxCampos.SelectedItem.ToString() == "Teléfono")
+            {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Menor a");
+                CbxCriterio.Items.Add("Mayor a");
+                CbxCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Empieza con");
+                CbxCriterio.Items.Add("Termina con");
+                CbxCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string campo = CbxCampos.SelectedItem.ToString();
+                string criterio = CbxCriterio.SelectedItem.ToString();
+                string texto = TxtFiltroAvanzado.Text;
+
+                DgvProfesores.DataSource = profesores.FiltroAvanzado(campo, criterio, texto);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido buscar: " + ex.ToString());
+            }
         }
 
         private void LoadData()
@@ -145,5 +183,10 @@ namespace Testing1ConexionesDB
             }
         }
 
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            DgvProfesores.DataSource = ListaProfesores;
+            TxtFiltroAvanzado.Text = "";
+        }
     }
 }

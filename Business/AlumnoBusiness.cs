@@ -188,5 +188,106 @@ namespace Business
                 dataAccess.CloseConnection();
             }
         }
+
+        public List<Alumno> FiltroAvanzado(string campo, string criterio, string texto)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<Alumno> listaFiltroAvanzado = new List<Alumno>();
+
+            if (campo == "Teléfono")
+            {
+                campo = "Telefono";
+
+                switch (criterio)
+                {
+                    case "Mayor a":
+                        criterio = ">";
+                        break;
+
+                    case "Menor a":
+                        criterio = "<";
+                        break;
+
+                    default:
+                        criterio = "=";
+                        break;
+                }
+            }
+            else
+            {
+                if (campo == "Primer Apellido")
+                    campo = "Apellido1";
+
+                switch (criterio)
+                {
+                    case "Empieza con":
+                        texto = $"'{texto}%'";
+                        break;
+
+                    case "Termina con":
+                        texto = $"'%{texto}'";
+                        break;
+
+                    default:
+                        texto = $"'%{texto}%'";
+                        break;
+                }
+
+                criterio = "like";
+            }
+
+            string queryString = "SELECT A.Id as Id, NombreUsuario, Contraseña, Email, Nombre, Apellido1, Apellido2, FechaNacimiento,A.IdGenero as IdGenero, GE.Genero as Genero, Telefono, Direccion, Ciudad, UrlImagenPerfil, A.IdDisciplinas as IdDisciplina, D.Disciplina as Disciplina, A.IdGrupos as IdGrupo, GR.Grupo as Grupo FROM TESTING_ALUMNOS A, TESTING_GENEROS GE, TESTING_DISCIPLINAS D, TESTING_GRUPOS GR " +
+                "WHERE A.IdGenero = GE.Id " +
+                "AND A.IdDisciplinas = D.Id " +
+                "AND A.IdGrupos = GR.Id " +
+                "AND A.Activo = 1" +
+                $"AND {campo} {criterio} {texto}";
+            dataAccess.SetQuery(queryString);
+
+            try
+            {
+                dataAccess.ExecuteQuery();
+
+                while (dataAccess.Reader.Read())
+                {
+                    Alumno aux = new Alumno();
+                    aux.Id = (int)dataAccess.Reader["Id"];
+                    aux.NombreUsuario = (string)dataAccess.Reader["NombreUsuario"];
+                    aux.Contraseña = (string)dataAccess.Reader["Contraseña"];
+                    aux.Email = (string)dataAccess.Reader["Email"];
+                    aux.Nombre = (string)dataAccess.Reader["Nombre"];
+                    aux.Apellido1 = (string)dataAccess.Reader["Apellido1"];
+                    aux.Apellido2 = (string)dataAccess.Reader["Apellido2"];
+                    aux.FechaNacimiento = (DateTime)dataAccess.Reader["FechaNacimiento"];
+                    aux.Genero = new Genero();
+                    aux.Genero.Id = (int)dataAccess.Reader["IdGenero"];
+                    aux.Genero.Descripcion = (string)dataAccess.Reader["Genero"];
+                    aux.Telefono = (int)dataAccess.Reader["Telefono"];
+                    aux.Direccion = (string)dataAccess.Reader["Direccion"];
+                    aux.Ciudad = (string)dataAccess.Reader["Ciudad"];
+                    if (!(dataAccess.Reader["UrlImagenPerfil"] is DBNull))
+                        aux.UrlImagenPerfil = (string)dataAccess.Reader["UrlImagenPerfil"];
+                    aux.Disciplina = new Disciplina();
+                    aux.Disciplina.Id = (int)dataAccess.Reader["IdDisciplina"];
+                    aux.Disciplina.Descripcion = (string)dataAccess.Reader["Disciplina"];
+                    aux.Grupo = new Grupo();
+                    aux.Grupo.Id = (int)dataAccess.Reader["IdGrupo"];
+                    aux.Grupo.Descripcion = (string)dataAccess.Reader["Grupo"];
+
+                    listaFiltroAvanzado.Add(aux);
+                }
+
+                return listaFiltroAvanzado;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+        }
     }
 }
