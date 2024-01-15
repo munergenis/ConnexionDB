@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Testing1ConexionesDB
 {
     public partial class FrmNuevoAlumno : Form
     {
         Alumno alumno = null;
+        OpenFileDialog imagen = null;
 
         public FrmNuevoAlumno()
         {
@@ -113,7 +116,17 @@ namespace Testing1ConexionesDB
             alumno.Telefono = int.Parse(TxtTelefono.Text);
             alumno.Direccion = TxtDireccion.Text;
             alumno.Ciudad = TxtCiudad.Text;
-            alumno.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+
+            if (imagen != null && !(TxtUrlImagenPerfil.Text.ToLower().Contains("http")))
+            {
+                File.Copy(imagen.FileName, ConfigurationManager.AppSettings["profile-image"] + imagen.SafeFileName);
+                alumno.UrlImagenPerfil = ConfigurationManager.AppSettings["profile-image"] + imagen.SafeFileName;
+            }
+            else
+            {
+                alumno.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+            }
+
             alumno.Disciplina = (Disciplina)CbxDisciplinas.SelectedItem;
             alumno.Grupo = (Grupo)CbxGrupos.SelectedItem;
 
@@ -141,6 +154,18 @@ namespace Testing1ConexionesDB
         private void TxtUrlImagenPerfil_Leave(object sender, EventArgs e)
         {
             LoadImage(TxtUrlImagenPerfil.Text);
+        }
+
+        private void BtnCargarImagen_Click(object sender, EventArgs e)
+        {
+            imagen = new OpenFileDialog();
+            imagen.Filter = "jpg | *.jpg | png | *.png";
+
+            if (imagen.ShowDialog() == DialogResult.OK)
+            {
+                TxtUrlImagenPerfil.Text = imagen.FileName;
+                LoadImage(TxtUrlImagenPerfil.Text);
+            }
         }
 
         private void LoadImage(string url)

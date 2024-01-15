@@ -9,12 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Testing1ConexionesDB
 {
     public partial class FrmNuevoProfesor : Form
     {
         Profesor profesor = null;
+        OpenFileDialog imagen = null;
 
         public FrmNuevoProfesor()
         {
@@ -113,7 +117,17 @@ namespace Testing1ConexionesDB
                 profesor.Telefono = int.Parse(TxtTelefono.Text);
                 profesor.Direccion = TxtDireccion.Text;
                 profesor.Ciudad = TxtCiudad.Text;
-                profesor.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+
+                if (imagen != null && !(TxtUrlImagenPerfil.Text.ToLower().Contains("http")))
+                {
+                    File.Copy(imagen.FileName, ConfigurationManager.AppSettings["profile-image"] + imagen.SafeFileName);
+                    profesor.UrlImagenPerfil = ConfigurationManager.AppSettings["profile-image"] + imagen.SafeFileName;
+                }
+                else
+                {
+                    profesor.UrlImagenPerfil = TxtUrlImagenPerfil.Text;
+                }
+
                 profesor.Genero = (Genero)CbxGenero.SelectedItem;
                 profesor.Disciplinas = (Disciplina)CbxDisciplinas.SelectedItem;
                 profesor.Grupos = (Grupo)CbxGrupos.SelectedItem;
@@ -130,6 +144,7 @@ namespace Testing1ConexionesDB
                     MessageBox.Show("Nuevo profesor agregado");
                 }
 
+
                 Close();
             }
             catch (Exception ex)
@@ -141,6 +156,18 @@ namespace Testing1ConexionesDB
         private void TxtUrlImagenPerfil_Leave(object sender, EventArgs e)
         {
             LoadImage(TxtUrlImagenPerfil.Text);
+        }
+
+        private void BtnCargarImagen_Click(object sender, EventArgs e)
+        {
+            imagen = new OpenFileDialog();
+            imagen.Filter = "jpg | *.jpg | png | *.png";
+
+            if (imagen.ShowDialog() == DialogResult.OK)
+            {
+                TxtUrlImagenPerfil.Text = imagen.FileName;
+                LoadImage(TxtUrlImagenPerfil.Text);
+            }
         }
 
         private void LoadImage(string url)
